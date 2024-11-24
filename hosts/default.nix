@@ -25,7 +25,6 @@ in
       };
     };
     modules = [
-      nixvim.nixosModules.nixvim
       ./kishi
       ./configuration.nix
 
@@ -46,7 +45,6 @@ in
       };
     };
     modules = [
-      nixvim.nixosModules.nixvim
       ./vm
       ./configuration.nix
 
