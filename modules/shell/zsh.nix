@@ -11,8 +11,11 @@
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       enableCompletion = true;
-      shellAliases = { ll = "ls -al"; };
-      histSize = 100000;
+      shellAliases = { 
+	ll = "ls -al";
+      };
+
+histSize = 100000;
 
       ohMyZsh = {
         enable = true;
@@ -21,7 +24,7 @@
 
       shellInit = ''
         # starship
-        eval "$(starship init zsh)"
+        # eval "$(starship init zsh)"
       '';
     };
   };
