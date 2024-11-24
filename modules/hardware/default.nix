@@ -1,0 +1,4 @@
+[
+  ./bluetooth.nix
+]
+
