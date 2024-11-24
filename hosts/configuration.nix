@@ -86,6 +86,7 @@ in
       usbutils # Manage USB
       wget # Retriever
       xdg-utils # Environment integration
+      vim # VIM
 
       # Video/Audio
       alsa-utils # Audio Control

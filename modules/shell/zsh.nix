@@ -18,9 +18,6 @@
         plugins = [ "git" ];
       };
     };
-    starship = {
-      enable = true;
-    };
   };
 }
 
