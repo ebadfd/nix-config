@@ -11,11 +11,11 @@
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
       enableCompletion = true;
-      shellAliases = { 
-	ll = "ls -al";
+      shellAliases = {
+        ll = "ls -al";
       };
 
-histSize = 100000;
+      histSize = 100000;
 
       ohMyZsh = {
         enable = true;
