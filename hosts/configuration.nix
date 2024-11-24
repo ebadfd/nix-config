@@ -111,7 +111,6 @@ in
       rsync # Syncer - $ rsync -r dir1/ dir2/
       unzip # Zip Files
       unrar # Rar Files
-      wpsoffice # Office
       zip # Zip
 
       # Other Packages Found @
@@ -155,8 +154,6 @@ in
       '';
     };
   };
-
-  flatpak.enable = true;
 
   nix = {
     settings = {
@@ -202,7 +199,7 @@ in
           "text/plain" = "nvim.desktop";
           "text/html" = "nvim.desktop";
           "text/csv" = "nvim.desktop";
-          "application/pdf" = [ "wps-office-pdf.desktop" "firefox.desktop" "google-chrome.desktop" ];
+          "application/pdf" = [ "firefox.desktop" "google-chrome.desktop" ];
           "application/zip" = "org.gnome.FileRoller.desktop";
           "application/x-tar" = "org.gnome.FileRoller.desktop";
           "application/x-bzip2" = "org.gnome.FileRoller.desktop";

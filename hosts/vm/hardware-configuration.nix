@@ -20,7 +20,7 @@
   ];
 
   networking = with host; {
-    useDHCP = true;
+    useDHCP = lib.mkDefault true;
     hostName = hostName;
   };
 

@@ -16,7 +16,7 @@
     };
   };
 
-  bspwm.enable = true;
+  gnome.enable = true;
 
   environment = {
     systemPackages = with pkgs; [
