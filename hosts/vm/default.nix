@@ -16,7 +16,8 @@
     };
   };
 
-  gnome.enable = true;
+  # gnome.enable = false;
+  dwm.enable = true;
 
   environment = {
     systemPackages = with pkgs; [

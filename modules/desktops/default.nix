@@ -1,4 +1,5 @@
 [
   ./gnome.nix
+  ./dwm.nix
 ]
 
