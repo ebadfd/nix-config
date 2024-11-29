@@ -8,10 +8,6 @@
         type = types.bool;
         default = false;
       };
-      initExtra = mkOption {
-        type = types.str;
-        default = "# init extra for the zsh";
-      };
     };
   };
 
@@ -42,8 +38,6 @@
           # starship
           # eval "$(starship init zsh)"
         '';
-
-        initExtra = config.zsh.initExtra;
       };
     };
   };
