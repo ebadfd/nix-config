@@ -1,5 +1,6 @@
-{ config, pkgs, vars, ... }:
+{ config, lib, pkgs, vars, ... }:
 
+with lib;
 {
 
   options = {
