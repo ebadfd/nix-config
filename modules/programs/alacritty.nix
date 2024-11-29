@@ -7,7 +7,7 @@
         enable = true;
         settings = {
           font = {
-            normal.family = "FiraCode Nerd Font";
+            normal.family = "Fira Mono";
             bold = { style = "Bold"; };
             size = 11;
           };
