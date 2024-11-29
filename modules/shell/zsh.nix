@@ -17,7 +17,6 @@ with lib;
   };
 
   config = mkIf (config.zsh.enable) {
-
     users.users.${vars.user} = {
       shell = pkgs.zsh;
     };
@@ -34,9 +33,10 @@ with lib;
 
         histSize = 100000;
 
-        ohMyZsh = {
+        oh-my-zsh = {
           enable = true;
           plugins = [ "git" ];
+          theme = "robbyrussell";
         };
 
         promptInit = config.zsh.promptInit;
