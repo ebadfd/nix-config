@@ -114,6 +114,8 @@ in
       unrar # Rar Files
       zip # Zip
 
+      fastfetch # fast fetch
+
       # Other Packages Found @
       # - ./<host>/default.nix
       # - ../modules
