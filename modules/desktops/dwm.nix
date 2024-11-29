@@ -14,6 +14,10 @@ with lib;
   config = mkIf (config.dwm.enable) {
     programs = {
       zsh.enable = true;
+      zsh.profileExtra = ''
+        # Start graphical server on user's current tty if not already running.
+        [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC" &> /dev/null
+      '';
     };
 
     services = {
@@ -48,11 +52,6 @@ with lib;
     };
 
     home-manager.users.${vars.user} = {
-      programs.zsh.initExtra = ''
-        # Start graphical server on user's current tty if not already running.
-        [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC" &> /dev/null
-      '';
-
       xsession = {
         enable = true;
         windowManager.command = "while type dwm > ~/.dwm.log; do dwm && continue || break; done";

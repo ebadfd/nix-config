@@ -9,6 +9,10 @@ with lib;
         type = types.bool;
         default = false;
       };
+      profileExtra = mkOption {
+        type = types.str;
+        default = ''# hello world'';
+      };
     };
   };
 
@@ -35,7 +39,9 @@ with lib;
           plugins = [ "git" ];
         };
 
-        shellInit = ''
+        profileExtra = config.zsh.profileExtra;
+
+        initExtra = ''
           # starship
           # eval "$(starship init zsh)"
         '';
@@ -43,3 +49,5 @@ with lib;
     };
   };
 }
+
+
