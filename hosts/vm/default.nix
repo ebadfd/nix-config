@@ -17,6 +17,7 @@
   };
 
   # gnome.enable = false;
+  x11wm.enable = true;
   dwm.enable = true;
 
   environment = {
