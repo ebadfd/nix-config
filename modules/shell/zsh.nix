@@ -1,31 +1,50 @@
-{ pkgs, vars, ... }:
+{ config, pkgs, vars, ... }:
 
 {
-  users.users.${vars.user} = {
-    shell = pkgs.zsh;
+
+  options = {
+    zsh = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+      initExtra = mkOption {
+        type = types.str;
+        default = "# init extra for the zsh";
+      };
+    };
   };
 
-  programs = {
-    zsh = {
-      enable = true;
-      autosuggestions.enable = true;
-      syntaxHighlighting.enable = true;
-      enableCompletion = true;
-      shellAliases = {
-        ll = "ls -al";
-      };
+  config = mkIf (config.zsh.enable) {
 
-      histSize = 100000;
+    users.users.${vars.user} = {
+      shell = pkgs.zsh;
+    };
 
-      ohMyZsh = {
+    programs = {
+      zsh = {
         enable = true;
-        plugins = [ "git" ];
-      };
+        autosuggestions.enable = true;
+        syntaxHighlighting.enable = true;
+        enableCompletion = true;
+        shellAliases = {
+          ll = "ls -al";
+        };
 
-      shellInit = ''
-        # starship
-        # eval "$(starship init zsh)"
-      '';
+        histSize = 100000;
+
+        ohMyZsh = {
+          enable = true;
+          plugins = [ "git" ];
+        };
+
+        shellInit = ''
+          # starship
+          # eval "$(starship init zsh)"
+        '';
+
+        initExtra = config.zsh.initExtra;
+      };
     };
   };
 }
