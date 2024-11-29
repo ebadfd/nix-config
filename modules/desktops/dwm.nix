@@ -63,22 +63,11 @@ with lib;
     };
 
     home-manager.users.${vars.user} = {
-      home = {
-        file.".xinitrc" = {
-          executable = true;
-          text = # bash
-            ''
-              #! ${pkgs.bash}
-              $HOME/.xsession
-            '';
-        };
-      };
-    };
-    xsession = {
+xsession = {
       enable = true;
       windowManager.command = "while type dwm > ~/.dwm.log; do dwm && continue || break; done";
 
-      profileExtra = ''
+profileExtra = ''
         # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
         if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
           eval $(dbus-launch --exit-with-session --sh-syntax)
@@ -91,8 +80,19 @@ with lib;
 
         # Fix Java applications not rendering correctly on DWM
         export _JAVA_AWT_WM_NONREPARENTING=1
-      '';
+'';
+};
+      home = {
+        file.".xinitrc" = {
+          executable = true;
+          text = # bash
+            ''
+              #! ${pkgs.bash}
+              $HOME/.xsession
+            '';
+        };
+      };
     };
-  };
+};
 }
 
