@@ -16,7 +16,7 @@
             size = 12;
 
             bold = {
-              family = "Fira Mono";
+              family = "FiraMono Nerd Font";
               style = "Bold";
             };
 
@@ -26,12 +26,12 @@
             };
 
             italic = {
-              family = "Fira Mono";
+              family = "FiraMono Nerd Font";
               style = "Italic";
             };
 
             normal = {
-              family = "Fira Mono";
+              family = "FiraMono Nerd Font";
               style = "Regular";
             };
 

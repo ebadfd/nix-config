@@ -31,7 +31,7 @@
       vars = {
         user = "dasith";
         location = "$HOME/nix-config";
-        terminal = "kitty";
+        terminal = "alacritty";
         editor = "nvim";
         stateVersion = "24.05";
       };
