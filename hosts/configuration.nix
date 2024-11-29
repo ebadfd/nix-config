@@ -8,7 +8,7 @@ in
     # import ../modules/editors ++
     import ../modules/hardware ++
     import ../modules/programs ++
-    # import ../modules/services ++
+    import ../modules/services ++
     # import ../modules/theming ++
     import ../modules/shell);
 
@@ -56,6 +56,7 @@ in
     (nerdfonts.override {
       fonts = [
         "FiraCode"
+        "FiraMono"
       ];
     })
   ];

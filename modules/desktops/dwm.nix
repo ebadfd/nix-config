@@ -14,6 +14,7 @@ with lib;
   config = mkIf (config.dwm.enable) {
     programs = {
       zsh.enable = true;
+      x11wm.enable = true;
     };
 
     services = {
