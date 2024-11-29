@@ -38,7 +38,7 @@ with lib;
             src = pkgs.fetchFromGitHub {
               owner = "ebadfd";
               repo = "dwm";
-              rev = "3f6cf3d0d511110fd4fba3c89722f289f15c89be";
+              rev = "793f1e4f99441353ada38783560b900eb039d30c";
               hash = "sha256-69iHYr2258idJdzvQOj2rxWSKDs3eENBQzK+UlVEpoI=";
             };
           };
