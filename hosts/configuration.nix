@@ -77,12 +77,10 @@ in
       killall # Process Killer
       lshw # Hardware Config
       nano # Text Editor
-      nodejs # Javascript Runtime
-      nodePackages.pnpm # Package Manager
+
       nix-tree # Browse Nix Store
       pciutils # Manage PCI
       ranger # File Manager
-      smartmontools # Disk Health
       tldr # Helper
       usbutils # Manage USB
       wget # Retriever
@@ -103,12 +101,11 @@ in
       # Apps
       appimage-run # Runs AppImages on NixOS
       firefox # Browser
-      google-chrome # Browser
       remmina # XRDP & VNC Client
 
       # File Management
       file-roller # Archive Manager
-      pcmanfm # File Browser
+      xfce.thunar # File Browser
       p7zip # Zip Encryption
       rsync # Syncer - $ rsync -r dir1/ dir2/
       unzip # Zip Files
@@ -116,6 +113,7 @@ in
       zip # Zip
 
       fastfetch # fast fetch
+      dmenu # dmenu
 
       # Other Packages Found @
       # - ./<host>/default.nix
@@ -229,4 +227,3 @@ in
     };
   };
 }
-

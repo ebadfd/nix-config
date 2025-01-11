@@ -39,7 +39,7 @@ with lib;
               owner = "ebadfd";
               repo = "dwm";
               rev = "master";
-              sha256 = "sha256-graxSVrBfoCtTPzc4Zo5RFal127H4X76YlfCuhrdVnI=";
+              sha256 = "sha256-n+T67s+ohqu92PxISM1NCHLb4Buh47VkcMl1Rojfhe0=";
               # sha256 = lib.fakeSha256;
             };
           };

@@ -16,6 +16,7 @@ let
   lib = nixpkgs.lib;
 in
 {
+  # thinkpad t480 profile
   kishi = lib.nixosSystem {
     inherit system;
     specialArgs = {
@@ -28,6 +29,7 @@ in
       ./kishi
       ./configuration.nix
 
+      nixos-hardware.nixosModules.lenovo-thinkpad-t480
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -36,6 +38,7 @@ in
     ];
   };
 
+  # vm profile
   vm = lib.nixosSystem {
     inherit system;
     specialArgs = {
