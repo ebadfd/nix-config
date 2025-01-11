@@ -24,5 +24,12 @@ with lib;
         default = false;
       };
     };
+    # Enable plymouth
+    plymouth = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+    };
   };
 }

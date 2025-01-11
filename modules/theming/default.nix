@@ -1,0 +1,4 @@
+[
+  ./theming.nix
+  ./stylix.nix
+]

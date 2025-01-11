@@ -23,8 +23,6 @@
             padding = 16;
             horizontal_padding = 16;
             frame_width = 3;
-            separator_color = "frame";
-            font = "FiraCode Mono Font 10";
             line_height = 4;
             idle_threshold = 120;
             markup = "full";
@@ -39,21 +37,6 @@
             stack_duplicates = true;
             # startup_notification = false;
             hide_duplicate_count = true;
-          };
-          urgency_low = {
-            background = "#181818";
-            frame_color = "#323232";
-            timeout = 4;
-          };
-          urgency_normal = {
-            background = "#181818";
-            frame_color = "#323232";
-            timeout = 4;
-          };
-          urgency_critical = {
-            background = "#2e0202";
-            frame_color = "#323232";
-            timeout = 10;
           };
         };
       };
