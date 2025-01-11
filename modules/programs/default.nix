@@ -1,4 +1,5 @@
 [
   ./alacritty.nix
+  ./git.nix
 ]
 

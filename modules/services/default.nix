@@ -1,4 +1,4 @@
 [
   ./dunst.nix
+  ./plymouth.nix
 ]
-

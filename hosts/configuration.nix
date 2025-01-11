@@ -9,7 +9,7 @@ in
     import ../modules/hardware ++
     import ../modules/programs ++
     import ../modules/services ++
-    # import ../modules/theming ++
+    import ../modules/theming ++
     import ../modules/shell);
 
   boot = {
@@ -115,6 +115,9 @@ in
       fastfetch # fast fetch
       dmenu # dmenu
 
+      gnupg # pgp
+      ripgrep # rip grep
+
       # Other Packages Found @
       # - ./<host>/default.nix
       # - ../modules
@@ -131,6 +134,12 @@ in
     nix-ld = {
       enable = true;
       libraries = [ ];
+    };
+    gnupg = {
+      agent = {
+        enable = true;
+        enableSSHSupport = true;
+      };
     };
   };
 

@@ -11,6 +11,7 @@
   # gnome.enable = false;
   x11wm.enable = true;
   dwm.enable = true;
+  plymouth.enable = true;
 
   environment = {
     systemPackages = with pkgs; [
