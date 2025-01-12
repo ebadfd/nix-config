@@ -291,6 +291,7 @@
     },
     "root": {
       "inputs": {
+        "base16-tmux": "base16-tmux",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
         "nixos-hardware": "nixos-hardware",
@@ -306,7 +307,9 @@
         "base16-foot": "base16-foot",
         "base16-helix": "base16-helix",
         "base16-kitty": "base16-kitty",
-        "base16-tmux": "base16-tmux",
+        "base16-tmux": [
+          "base16-tmux"
+        ],
         "base16-vim": "base16-vim",
         "flake-compat": "flake-compat",
         "gnome-shell": "gnome-shell",

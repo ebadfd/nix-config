@@ -3,4 +3,3 @@
   ./dwm.nix
   ./options.nix
 ]
-

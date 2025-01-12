@@ -20,7 +20,7 @@ with lib;
       libinput = {
         enable = true;
         touchpad = {
-          naturalScrolling = true;
+          naturalScrolling = false;
         };
       };
       displayManager = {
@@ -88,4 +88,3 @@ with lib;
     };
   };
 }
-

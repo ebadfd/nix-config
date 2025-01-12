@@ -18,6 +18,13 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
+    base16-tmux = {
+      flake = false;
+      url = "github:tinted-theming/base16-tmux";
+    };
+
+    stylix.inputs.base16-tmux.follows = "base16-tmux";
   };
 
   outputs =

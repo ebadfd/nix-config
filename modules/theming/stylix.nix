@@ -1,5 +1,4 @@
 { lib, config, pkgs, host, vars, ... }:
-
 {
    stylix.enable = true;
 
@@ -54,7 +53,6 @@
 
   stylix.targets = {
     console.enable = true;
-    feh.enable = true;
     grub.enable = true; 
     gtk.enable = true;
     nixos-icons.enable = true;
@@ -63,6 +61,13 @@
       enable = true;
       logo = ./boot.jpg;
       logoAnimated = false;
+    };
+  };
+
+  home-manager.users.${vars.user} = {
+    stylix.targets = {
+       feh.enable = true;
+       tmux.enable = false;
     };
   };
 }

@@ -118,6 +118,9 @@ in
       gnupg # pgp
       ripgrep # rip grep
 
+      xclip # access the X clipboard from console
+      fzf # fuzzy find
+
       # Other Packages Found @
       # - ./<host>/default.nix
       # - ../modules
