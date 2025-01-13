@@ -1,6 +1,6 @@
 [
   ./dunst.nix
   ./plymouth.nix
-  # ./syncthing.nix
+  ./syncthing.nix
   ./ratbagd.nix
 ]

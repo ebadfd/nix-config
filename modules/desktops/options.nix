@@ -38,5 +38,11 @@ with lib;
         default = false;
       };
     };
+    syncthing = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+    };
   };
 }

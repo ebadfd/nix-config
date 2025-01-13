@@ -6,8 +6,12 @@
      syntaxHighlighting.enable = true;
      enableCompletion = true;
      shellAliases = {
-       ll = "ls -al";
-        v = "nvim";
+      ll = "ls -al";
+      v = "nvim";
+      pbcopy = "xclip -selection clipboard";
+
+      killbt = "rfkill block bluetooth";
+      unKillbt = "rfkill unblock bluetooth";
      };
 
      histSize = 100000;
