@@ -48,7 +48,6 @@
       };
     in
     {
-
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
