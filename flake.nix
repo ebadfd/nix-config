@@ -25,6 +25,17 @@
     };
 
     stylix.inputs.base16-tmux.follows = "base16-tmux";
+
+    plugin-cozy-bear = {
+      url = "https://github.com/ebadfd/cozy-bear-nvim/";
+      flake = false;
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+    };
+    
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -33,6 +44,7 @@
     , nixpkgs-stable
     , nixos-hardware
     , stylix
+    , nixvim
     , home-manager
     , home-manager-stable
     , ...
@@ -51,7 +63,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix vars;
+          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix nixvim vars;
         }
       );
     };
