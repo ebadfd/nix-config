@@ -73,6 +73,8 @@ with lib;
           slstatus &
           nm-applet &
           blueman-applet &
+
+          ~/.fehbg
         '';
       };
       home = {

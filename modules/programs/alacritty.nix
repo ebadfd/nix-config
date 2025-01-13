@@ -12,6 +12,13 @@
             WINIT_X11_SCALE_FACTOR = "1.0";
           };
 
+          window = {
+            padding = {
+              x = 3;
+              y = 3;
+            };
+          };
+
           font = {
             glyph_offset = {
               x = 0;
