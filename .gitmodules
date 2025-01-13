@@ -1,0 +1,4 @@
+[submodule "modules/editors/nvim"]
+	path = modules/editors/nvim
+	url = git@github.com:ebadfd/nvim.git
+	branch = v2

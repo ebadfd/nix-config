@@ -12,6 +12,7 @@
   x11wm.enable = true;
   dwm.enable = true;
   plymouth.enable = true;
+  ratbagd.enable = true;
 
   environment = {
     systemPackages = with pkgs; [

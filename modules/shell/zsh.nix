@@ -1,53 +1,24 @@
 { config, lib, pkgs, vars, ... }:
-
-with lib;
 {
+  programs.zsh = {
+     enable = true;
+     autosuggestions.enable = true;
+     syntaxHighlighting.enable = true;
+     enableCompletion = true;
+     shellAliases = {
+       ll = "ls -al";
+     };
 
-  options = {
-    zsh = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-      };
-      promptInit = mkOption {
-        type = types.str;
-        default = ''# hello world'';
-      };
-    };
+     histSize = 100000;
+
+     ohMyZsh = {
+       enable = true;
+       plugins = [ "git" "aliases" "aws" "battery"];
+       theme = "refined";
+     };
   };
 
-  config = mkIf (config.zsh.enable) {
-    users.users.${vars.user} = {
-      shell = pkgs.zsh;
-    };
-
-    programs = {
-      zsh = {
-        enable = true;
-        autosuggestions.enable = true;
-        syntaxHighlighting.enable = true;
-        enableCompletion = true;
-        shellAliases = {
-          ll = "ls -al";
-        };
-
-        histSize = 100000;
-
-        oh-my-zsh = {
-          enable = true;
-          plugins = [ "git" ];
-          theme = "robbyrussell";
-        };
-
-        promptInit = config.zsh.promptInit;
-
-        shellInit = ''
-          # starship
-          # eval "$(starship init zsh)"
-        '';
-      };
-    };
+  users.users.${vars.user} = {
+    shell = pkgs.zsh;
   };
 }
-
-

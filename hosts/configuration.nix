@@ -5,7 +5,7 @@ let
 in
 {
   imports = (import ../modules/desktops ++
-    # import ../modules/editors ++
+    import ../modules/editors ++
     import ../modules/hardware ++
     import ../modules/programs ++
     import ../modules/services ++
@@ -96,7 +96,6 @@ in
       pipewire # Audio Server/Control
       pulseaudio # Audio Server/Control
       qpwgraph # Pipewire Graph Manager
-      vlc # Media Player
 
       # Apps
       appimage-run # Runs AppImages on NixOS
@@ -120,6 +119,8 @@ in
 
       xclip # access the X clipboard from console
       fzf # fuzzy find
+
+      flameshot # screenshot utils
 
       # Other Packages Found @
       # - ./<host>/default.nix
