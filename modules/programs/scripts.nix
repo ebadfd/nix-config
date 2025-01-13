@@ -6,9 +6,12 @@
       "$HOME/.local/bin"
    ];
    home.file = {
-      ".local/bin" = {
-        source = ./bin;
-        recursive = true;
+      ".local/bin/tmux-sessionizer" = {
+        source = ./bin/tmux-sessionizer;
+        executable = true;
+      };
+      ".zsh_profile" = {
+        source = ./bin/zsh_profile;
       };
     };
   };

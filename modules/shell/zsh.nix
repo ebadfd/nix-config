@@ -1,4 +1,4 @@
-{ config, lib, pkgs, vars, ... }:
+{ pkgs, vars, ... }:
 {
   programs.zsh = {
      enable = true;
@@ -7,9 +7,14 @@
      enableCompletion = true;
      shellAliases = {
        ll = "ls -al";
+        v = "nvim";
      };
 
      histSize = 100000;
+
+    promptInit  = ''
+source /home/${vars.user}/.zsh_profile
+    '';
 
      ohMyZsh = {
        enable = true;
@@ -22,3 +27,4 @@
     shell = pkgs.zsh;
   };
 }
+

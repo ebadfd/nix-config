@@ -7,11 +7,15 @@
 {
   hardware.bluetooth = {
     enable = true;
+    powerOnBoot = true;
+    package = pkgs.bluez5-experimental;
     settings = {
-      General = {
-        Enable = "Source,Sink,Media,Socket";
+      Policy = {
         AutoEnable = true;
-        ControllerMode = "bredr";
+      };
+      General = {
+        Name = "kishi_bluez";
+        AutoEnable = true;
       };
     };
   };

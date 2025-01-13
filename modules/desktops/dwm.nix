@@ -35,7 +35,7 @@ with lib;
               owner = "ebadfd";
               repo = "dwm";
               rev = "master";
-              sha256 = "sha256-ytsmXp8NIk7Ai7ilqnt2cbJuv+Wpf5T4lanBSREL+g8=";
+              sha256 = "sha256-9u6UoJcda92iPCXXupS+F55yh/H3n/DmHS+vVqjLZFc=";
               # sha256 = lib.fakeSha256;
             };
           };
@@ -69,8 +69,10 @@ with lib;
 
           # Fix Java applications not rendering correctly on DWM
           export _JAVA_AWT_WM_NONREPARENTING=1
-
-	  slstatus &
+	  
+          slstatus &
+          nm-applet &
+          blueman-applet &
         '';
       };
       home = {

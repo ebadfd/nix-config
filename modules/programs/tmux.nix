@@ -33,6 +33,8 @@
 	  bind -r j select-pane -D
 	  bind -r h select-pane -L
 	  bind -r l select-pane -R
+
+	  bind-key -r f run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
 	'';
       };
     };

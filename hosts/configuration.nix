@@ -42,6 +42,8 @@ in
     sudo.wheelNeedsPassword = true;
   };
 
+  networking.networkmanager.enable = true;
+
   fonts.packages = with pkgs; [
     carlito # NixOS
     vegur # NixOS
@@ -90,7 +92,6 @@ in
       mpv # Media Player
       pavucontrol # Audio Control
       pipewire # Audio Server/Control
-      pulseaudio # Audio Server/Control
       qpwgraph # Pipewire Graph Manager
 
       # Apps
@@ -117,6 +118,7 @@ in
       fzf # fuzzy find
 
       flameshot # screenshot utils
+      networkmanagerapplet # network manager applet
 
       # Other Packages Found @
       # - ./<host>/default.nix
@@ -143,7 +145,8 @@ in
     };
   };
 
-  hardware.pulseaudio.enable = false;
+  hardware.enableAllFirmware = true;
+
   services = {
     printing = {
       enable = false;
@@ -156,6 +159,11 @@ in
       };
       pulse.enable = true;
       jack.enable = true;
+      wireplumber.extraConfig."11-bluetooth-policy" = {
+        "wireplumber.settings" = {
+        "bluetooth.autoswitch-to-headset-profile" = false;
+      };
+    };
     };
     openssh = {
       enable = true;
