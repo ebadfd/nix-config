@@ -53,12 +53,8 @@ in
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-emoji
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "FiraMono"
-      ];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
   ];
 
   environment = {

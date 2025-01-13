@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix/release-24.05";
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
@@ -15,7 +15,7 @@
     };
 
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -31,11 +31,10 @@
       flake = false;
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.05";
-    };
-    
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+   nixvim = {
+       url = "github:nix-community/nixvim/nixos-24.11";
+       inputs.nixpkgs.follows = "nixpkgs";
+   };
   };
 
   outputs =

@@ -31,7 +31,7 @@
     emoji = config.stylix.fonts.monospace;
 
     monospace = {
-      package = pkgs.nerdfonts.override {fonts = ["FiraMono" "FiraCode"];};
+      package = pkgs.nerd-fonts.fira-mono;
       name = "FiraMono Nerd Font";
     };
 
