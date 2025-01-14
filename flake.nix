@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix/release-24.05";
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
@@ -15,9 +15,26 @@
     };
 
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
+    base16-tmux = {
+      flake = false;
+      url = "github:tinted-theming/base16-tmux";
+    };
+
+    stylix.inputs.base16-tmux.follows = "base16-tmux";
+
+    plugin-cozy-bear = {
+      url = "https://github.com/ebadfd/cozy-bear-nvim/";
+      flake = false;
+    };
+
+   nixvim = {
+       url = "github:nix-community/nixvim/nixos-24.11";
+       inputs.nixpkgs.follows = "nixpkgs";
+   };
   };
 
   outputs =
@@ -26,6 +43,7 @@
     , nixpkgs-stable
     , nixos-hardware
     , stylix
+    , nixvim
     , home-manager
     , home-manager-stable
     , ...
@@ -41,11 +59,10 @@
       };
     in
     {
-
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix vars;
+          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix nixvim vars;
         }
       );
     };

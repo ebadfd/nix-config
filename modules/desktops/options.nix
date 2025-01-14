@@ -31,5 +31,18 @@ with lib;
         default = false;
       };
     };
+    # Configuration library for gaming mice.
+    ratbagd = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+    };
+    syncthing = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+    };
   };
 }

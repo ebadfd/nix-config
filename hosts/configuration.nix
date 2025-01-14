@@ -5,7 +5,7 @@ let
 in
 {
   imports = (import ../modules/desktops ++
-    # import ../modules/editors ++
+    import ../modules/editors ++
     import ../modules/hardware ++
     import ../modules/programs ++
     import ../modules/services ++
@@ -42,6 +42,8 @@ in
     sudo.wheelNeedsPassword = true;
   };
 
+  networking.networkmanager.enable = true;
+
   fonts.packages = with pkgs; [
     carlito # NixOS
     vegur # NixOS
@@ -53,12 +55,8 @@ in
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-emoji
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "FiraMono"
-      ];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
   ];
 
   environment = {
@@ -94,9 +92,7 @@ in
       mpv # Media Player
       pavucontrol # Audio Control
       pipewire # Audio Server/Control
-      pulseaudio # Audio Server/Control
       qpwgraph # Pipewire Graph Manager
-      vlc # Media Player
 
       # Apps
       appimage-run # Runs AppImages on NixOS
@@ -117,6 +113,12 @@ in
 
       gnupg # pgp
       ripgrep # rip grep
+
+      xclip # access the X clipboard from console
+      fzf # fuzzy find
+
+      flameshot # screenshot utils
+      networkmanagerapplet # network manager applet
 
       # Other Packages Found @
       # - ./<host>/default.nix
@@ -143,7 +145,8 @@ in
     };
   };
 
-  hardware.pulseaudio.enable = false;
+  hardware.enableAllFirmware = true;
+
   services = {
     printing = {
       enable = false;
@@ -156,6 +159,11 @@ in
       };
       pulse.enable = true;
       jack.enable = true;
+      wireplumber.extraConfig."11-bluetooth-policy" = {
+        "wireplumber.settings" = {
+        "bluetooth.autoswitch-to-headset-profile" = false;
+      };
+    };
     };
     openssh = {
       enable = true;

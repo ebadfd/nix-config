@@ -12,15 +12,11 @@ with lib;
   };
 
   config = mkIf (config.dwm.enable) {
-    programs = {
-      zsh.enable = true;
-    };
-
     services = {
       libinput = {
         enable = true;
         touchpad = {
-          naturalScrolling = true;
+          naturalScrolling = false;
         };
       };
       displayManager = {
@@ -39,7 +35,7 @@ with lib;
               owner = "ebadfd";
               repo = "dwm";
               rev = "master";
-              sha256 = "sha256-n+T67s+ohqu92PxISM1NCHLb4Buh47VkcMl1Rojfhe0=";
+              sha256 = "sha256-9u6UoJcda92iPCXXupS+F55yh/H3n/DmHS+vVqjLZFc=";
               # sha256 = lib.fakeSha256;
             };
           };
@@ -73,19 +69,43 @@ with lib;
 
           # Fix Java applications not rendering correctly on DWM
           export _JAVA_AWT_WM_NONREPARENTING=1
+	  
+          slstatus &
+          nm-applet &
+          blueman-applet &
+
+          ~/.fehbg
         '';
       };
       home = {
         file.".xinitrc" = {
           executable = true;
-          text = # bash
+          text =
             ''
-              #! ${pkgs.bash}
               $HOME/.xsession
             '';
         };
       };
     };
+
+    nixpkgs.overlays = [
+        (final: prev: {
+         slstatus = prev.slstatus.overrideAttrs (old: { 
+            src = pkgs.fetchFromGitHub {
+              owner = "ebadfd";
+              repo = "slstatus";
+              rev = "master";
+              sha256 = "sha256-2GOzHgdp3En8Sru7DXgomS9AfA2rqNcL0ftceMoAkI8=";
+              # sha256 = lib.fakeSha256;
+            };
+ 	  });
+        })
+    ];
+
+    environment = {
+      systemPackages = with pkgs; [
+	slstatus
+      ];
+    };
   };
 }
-

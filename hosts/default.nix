@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, stylix, vars, ... }:
+{ inputs, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, stylix, nixvim, vars, ... }:
 
 let
   system = "x86_64-linux";
@@ -29,6 +29,7 @@ in
       ./kishi
       ./configuration.nix
       stylix.nixosModules.stylix
+      nixvim.nixosModules.nixvim
 
       nixos-hardware.nixosModules.lenovo-thinkpad-t480
       home-manager.nixosModules.home-manager
@@ -59,7 +60,4 @@ in
       }
     ];
   };
-
 }
-
-

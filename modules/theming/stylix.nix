@@ -1,11 +1,10 @@
 { lib, config, pkgs, host, vars, ... }:
-
 {
    stylix.enable = true;
 
    stylix.polarity = "dark";
 
-   stylix.image = ./wall.png;
+   stylix.image = ./wall.jpg;
 
    stylix.base16Scheme = {
      base00 = "181b23";
@@ -32,7 +31,7 @@
     emoji = config.stylix.fonts.monospace;
 
     monospace = {
-      package = pkgs.nerdfonts.override {fonts = ["FiraMono" "FiraCode"];};
+      package = pkgs.nerd-fonts.fira-mono;
       name = "FiraMono Nerd Font";
     };
 
@@ -54,7 +53,6 @@
 
   stylix.targets = {
     console.enable = true;
-    feh.enable = true;
     grub.enable = true; 
     gtk.enable = true;
     nixos-icons.enable = true;
@@ -63,6 +61,13 @@
       enable = true;
       logo = ./boot.jpg;
       logoAnimated = false;
+    };
+  };
+
+  home-manager.users.${vars.user} = {
+    stylix.targets = {
+       feh.enable = true;
+       tmux.enable = false;
     };
   };
 }
