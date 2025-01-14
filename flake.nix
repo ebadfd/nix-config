@@ -35,6 +35,11 @@
        url = "github:nix-community/nixvim/nixos-24.11";
        inputs.nixpkgs.follows = "nixpkgs";
    };
+
+   firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+   };
   };
 
   outputs =
@@ -45,6 +50,7 @@
     , stylix
     , nixvim
     , home-manager
+    , firefox-addons
     , home-manager-stable
     , ...
     }:
@@ -62,7 +68,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix nixvim vars;
+          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix nixvim firefox-addons vars;
         }
       );
     };

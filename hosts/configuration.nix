@@ -57,6 +57,7 @@ in
     noto-fonts-emoji
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
+    nerd-fonts.space-mono
   ];
 
   environment = {
@@ -96,7 +97,6 @@ in
 
       # Apps
       appimage-run # Runs AppImages on NixOS
-      firefox # Browser
       remmina # XRDP & VNC Client
 
       # File Management
@@ -108,7 +108,6 @@ in
       unrar # Rar Files
       zip # Zip
 
-      fastfetch # fast fetch
       dmenu # dmenu
 
       gnupg # pgp
