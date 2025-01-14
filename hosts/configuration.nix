@@ -57,6 +57,7 @@ in
     noto-fonts-emoji
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
+    nerd-fonts.space-mono
   ];
 
   environment = {
@@ -107,7 +108,6 @@ in
       unrar # Rar Files
       zip # Zip
 
-      fastfetch # fast fetch
       dmenu # dmenu
 
       gnupg # pgp

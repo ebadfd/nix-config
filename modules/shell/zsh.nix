@@ -9,6 +9,8 @@
       ll = "ls -al";
       v = "nvim";
       pbcopy = "xclip -selection clipboard";
+      nix-shell="nix-shell --run zsh";
+      nix-develop="nix develop -c zsh";
 
       killbt = "rfkill block bluetooth";
       unKillbt = "rfkill unblock bluetooth";

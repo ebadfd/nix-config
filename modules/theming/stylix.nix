@@ -33,6 +33,8 @@
     monospace = {
       package = pkgs.nerd-fonts.fira-mono;
       name = "FiraMono Nerd Font";
+      # package = pkgs.nerd-fonts.space-mono;
+      # name = "SpaceMono Nerd Font";
     };
 
     sizes = {

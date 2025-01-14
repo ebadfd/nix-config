@@ -95,7 +95,7 @@ with lib;
               owner = "ebadfd";
               repo = "slstatus";
               rev = "master";
-              sha256 = "sha256-2GOzHgdp3En8Sru7DXgomS9AfA2rqNcL0ftceMoAkI8=";
+              sha256 = "sha256-pLqfdgeEO1cAewi9UwIXDnIAK4/+4HIpgFGwJVtMAKI=";
               # sha256 = lib.fakeSha256;
             };
  	  });

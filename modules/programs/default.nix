@@ -5,5 +5,6 @@
   ./scripts.nix
   ./firefox.nix
   ./thunderbird.nix
+  ./fastfetch.nix
 ]
 

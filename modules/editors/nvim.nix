@@ -131,6 +131,8 @@
 	shiftwidth = 4;
 	expandtab = true;
 
+        clipboard = "unnamedplus";
+
 	smartindent = true;
 
 	wrap = false;
