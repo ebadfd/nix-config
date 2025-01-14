@@ -39,7 +39,7 @@
             {
               type =  "packages";
               key =  "  󰏗  ";
-              format =  "{5} (rpm), {1} (all)";
+              format =  "{1} (all)";
             }
             {
               type =  "uptime";
