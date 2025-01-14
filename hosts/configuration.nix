@@ -96,7 +96,6 @@ in
 
       # Apps
       appimage-run # Runs AppImages on NixOS
-      firefox # Browser
       remmina # XRDP & VNC Client
 
       # File Management
