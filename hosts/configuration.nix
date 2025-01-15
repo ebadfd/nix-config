@@ -119,6 +119,13 @@ in
       flameshot # screenshot utils
       networkmanagerapplet # network manager applet
 
+      dbgate # database management
+      pgadmin4-desktopmode # postgresql management
+      mongodb-compass # mongodb management
+
+      awscli2 # aws cli
+      kubectl # kubernets cli
+
       # Other Packages Found @
       # - ./<host>/default.nix
       # - ../modules
