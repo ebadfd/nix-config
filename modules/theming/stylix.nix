@@ -1,4 +1,4 @@
-{ lib, config, pkgs, host, vars, ... }:
+{ config, pkgs, vars, ... }:
 {
    stylix.enable = true;
 

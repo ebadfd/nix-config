@@ -16,6 +16,7 @@
 	  set-option -g prefix C-a
 	  bind-key C-a send-prefix
 	  set -g status-style 'bg=#333333 fg=#5eacd3'
+	  set -g default-shell ${pkgs.zsh}/bin/zsh
 
 	  # split current window horizontally
 	  bind - split-window -v
