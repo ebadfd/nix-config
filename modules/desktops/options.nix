@@ -38,6 +38,12 @@ with lib;
         default = false;
       };
     };
+    twingate = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+    };
     syncthing = {
       enable = mkOption {
         type = types.bool;

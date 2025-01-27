@@ -27,6 +27,7 @@
           bitwarden
           ublock-origin
           sidebery
+          surfingkeys
         ];
       };
 

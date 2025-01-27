@@ -119,14 +119,26 @@ in
       flameshot # screenshot utils
       networkmanagerapplet # network manager applet
 
+      dbgate # database management
+      pgadmin4-desktopmode # postgresql management
+      mongodb-compass # mongodb management
+
+      awscli2 # aws cli
+      kubectl # kubernets cli
+
+      dig # domain name server
+
       # Other Packages Found @
       # - ./<host>/default.nix
       # - ../modules
+      nmap
     ] ++
     (with stable; [
       # Apps
       # firefox # Browser
       image-roll # Image Viewer
+      qutebrowser # yes
+      postman
     ]);
   };
 
