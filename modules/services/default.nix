@@ -4,4 +4,5 @@
   ./syncthing.nix
   ./ratbagd.nix
   ./podman.nix
+  ./twingate.nix
 ]

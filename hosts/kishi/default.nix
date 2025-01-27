@@ -14,6 +14,7 @@
   plymouth.enable = true;
   ratbagd.enable = true;
   syncthing.enable = true;
+  twingate.enable = true;
 
   environment = {
     systemPackages = with pkgs; [
