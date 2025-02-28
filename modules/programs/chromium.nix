@@ -93,13 +93,11 @@ in
       in [
         # uBlock Origin
         # https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm
-        /*
         (createChromiumExtension {
           id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
           sha256 = "sha256:0ycnkna72n969crgxfy2lc1qbndjqrj46b9gr5l9b7pgfxi5q0ll";
           version = "1.62.0";
         })
-        */
         # Bitwarden Password Manager
         # https://chromewebstore.google.com/detail/bitwarden-password-manage/nngceckbapebfimnlniiiahkandclblb
         (createChromiumExtension {
