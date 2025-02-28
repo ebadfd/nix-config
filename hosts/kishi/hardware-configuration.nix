@@ -26,6 +26,10 @@
   networking = with host; {
     useDHCP = lib.mkDefault true;
     hostName = hostName;
+    extraHosts = ''
+      127.0.0.2 kishi
+      127.0.0.1 localhost
+    '';
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

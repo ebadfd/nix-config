@@ -132,6 +132,11 @@ in
       # - ./<host>/default.nix
       # - ../modules
       nmap
+      ansible
+      terraform
+      fluxcd
+      signal-desktop
+      supersonic # music player
     ] ++
     (with stable; [
       # Apps
@@ -139,6 +144,10 @@ in
       image-roll # Image Viewer
       qutebrowser # yes
       postman
+
+      # android mtp support
+      mtpfs
+      jmtpfs
     ]);
   };
 

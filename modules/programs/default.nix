@@ -6,5 +6,6 @@
   ./firefox.nix
   ./thunderbird.nix
   ./fastfetch.nix
+  ./brave.nix
 ]
 
