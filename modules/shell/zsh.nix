@@ -8,6 +8,7 @@
      shellAliases = {
       ll = "ls -al";
       v = "nvim";
+      k = "kubectl";
       pbcopy = "xclip -selection clipboard";
       nix-shell="nix-shell --run zsh";
       nix-develop="nix develop -c zsh";
