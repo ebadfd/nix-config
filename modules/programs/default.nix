@@ -7,5 +7,6 @@
   ./thunderbird.nix
   ./fastfetch.nix
   ./chromium.nix
+  ./bitwaden.nix
 ]
 
