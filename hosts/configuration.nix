@@ -65,6 +65,7 @@ in
       TERMINAL = "${vars.terminal}";
       EDITOR = "${vars.editor}";
       VISUAL = "${vars.editor}";
+      SSH_AUTH_SOCK = "/home/${vars.user}/.bitwarden-ssh-agent.sock";
     };
     systemPackages = with pkgs; [
       # Terminal
