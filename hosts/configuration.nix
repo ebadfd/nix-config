@@ -112,6 +112,7 @@ in
       dmenu # dmenu
 
       gnupg # pgp
+      gnumake
       ripgrep # rip grep
 
       xclip # access the X clipboard from console
