@@ -34,6 +34,7 @@ in
       nixos-hardware.nixosModules.lenovo-thinkpad-t480
       home-manager.nixosModules.home-manager
       {
+        home-manager.backupFileExtension = "hmbackup";
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
       }

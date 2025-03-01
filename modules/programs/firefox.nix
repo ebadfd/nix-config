@@ -13,7 +13,7 @@
   home-manager.users.${vars.user} = {
   programs = {
     firefox = {
-      enable = true;
+      enable = false;
       languagePacks = [ "si" "en-US" ];
 
       profiles.${vars.user} = {
