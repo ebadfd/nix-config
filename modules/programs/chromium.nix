@@ -4,6 +4,8 @@ let
     DefaultBrowserSettingEnabled = false;
     DnsOverHttpsMode = "automatic";
     DnsOverHttpsTemplatesWithIdentifiers  =  "https://cloudflare-dns.com/dns-query https://dns.quad9.net/dns-query{?dns}";
+    HomepageLocation = "https://homepage.ebadfd.tech/";
+    NewTabPageLocation = "https://homepage.ebadfd.tech/";
   };
   recommendedOpts = {
     BrowserThemeColor = "#181b23";
@@ -28,11 +30,16 @@ let
       name = "Personal";
     };
     browser = {
+      has_seen_welcome_page = true;
       theme = {
         color_variant = 1;
         user_color = -15653309; #181b23
       };
     };
+    pinned_extensions = [
+      bitwardenExtensionId
+      ublockOriginExtensionId
+    ];
     extensions =  {
       alerts =  {
         initialized =  true;
@@ -72,6 +79,10 @@ let
       avatar_index =  30;
       name = "Work";
     };
+    pinned_extensions = [
+      bitwardenExtensionId
+      ublockOriginExtensionId
+    ];
     browser = {
       has_seen_welcome_page = true;
       theme = {
