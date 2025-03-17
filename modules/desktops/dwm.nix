@@ -88,20 +88,6 @@ with lib;
       };
     };
 
-    nixpkgs.overlays = [
-        (final: prev: {
-         slstatus = prev.slstatus.overrideAttrs (old: { 
-            src = pkgs.fetchFromGitHub {
-              owner = "ebadfd";
-              repo = "slstatus";
-              rev = "master";
-              sha256 = "sha256-pLqfdgeEO1cAewi9UwIXDnIAK4/+4HIpgFGwJVtMAKI=";
-              # sha256 = lib.fakeSha256;
-            };
- 	  });
-        })
-    ];
-
     environment = {
       systemPackages = with pkgs; [
 	slstatus

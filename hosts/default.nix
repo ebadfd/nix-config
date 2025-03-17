@@ -1,16 +1,48 @@
-{ inputs, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, stylix, nixvim, vars, ... }:
+{ inputs, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, stylix, emacs-overlay, nixvim, vars, ... }:
 
 let
   system = "x86_64-linux";
 
   pkgs = import nixpkgs {
     inherit system;
-    config.allowUnfree = true;
+    overlays = [
+      emacs-overlay.overlay
+      (final: prev: {
+         slstatus = prev.slstatus.overrideAttrs (old: { 
+            src = pkgs.fetchFromGitHub {
+              owner = "ebadfd";
+              repo = "slstatus";
+              rev = "master";
+              sha256 = "sha256-pLqfdgeEO1cAewi9UwIXDnIAK4/+4HIpgFGwJVtMAKI=";
+              # sha256 = lib.fakeSha256;
+            };
+ 	    });
+      })
+    ];
+    config = {
+        allowUnfree = true;
+    };
   };
 
   stable = import nixpkgs-stable {
-    inherit system;
-    config.allowUnfree = true;
+      inherit system;
+      overlays = [
+      emacs-overlay.overlay 
+      (final: prev: {
+         slstatus = prev.slstatus.overrideAttrs (old: { 
+            src = pkgs.fetchFromGitHub {
+              owner = "ebadfd";
+              repo = "slstatus";
+              rev = "master";
+              sha256 = "sha256-pLqfdgeEO1cAewi9UwIXDnIAK4/+4HIpgFGwJVtMAKI=";
+              # sha256 = lib.fakeSha256;
+            };
+ 	    });
+      })
+    ];
+      config = {
+        allowUnfree = true;
+    };
   };
 
   lib = nixpkgs.lib;
@@ -20,7 +52,7 @@ in
   kishi = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
+      inherit inputs system stable vars pkgs; 
       host = {
         hostName = "kishi";
       };

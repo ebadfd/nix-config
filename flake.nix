@@ -19,18 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    base16-tmux = {
-      flake = false;
-      url = "github:tinted-theming/base16-tmux";
-    };
-
-    stylix.inputs.base16-tmux.follows = "base16-tmux";
-
-    plugin-cozy-bear = {
-      url = "https://github.com/ebadfd/cozy-bear-nvim/";
-      flake = false;
-    };
-
    nixvim = {
        url = "github:nix-community/nixvim/nixos-24.11";
        inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -40,6 +28,11 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
    };
+
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -51,6 +44,7 @@
     , nixvim
     , home-manager
     , firefox-addons
+    , emacs-overlay
     , home-manager-stable
     , ...
     }:
@@ -68,7 +62,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix nixvim firefox-addons vars;
+          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix emacs-overlay  nixvim firefox-addons vars;
         }
       );
     };

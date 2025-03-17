@@ -50,22 +50,6 @@
         "type": "github"
       }
     },
-    "base16-tmux": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740272597,
-        "narHash": "sha256-/etfUV3HzAaLW3RSJVwUaW8ULbMn3v6wbTlXSKbcoWQ=",
-        "owner": "tinted-theming",
-        "repo": "base16-tmux",
-        "rev": "b6c7f46c8718cc484f2db8b485b06e2a98304cd0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tinted-theming",
-        "repo": "base16-tmux",
-        "type": "github"
-      }
-    },
     "base16-vim": {
       "flake": false,
       "locked": {
@@ -101,6 +85,27 @@
       "original": {
         "owner": "numtide",
         "repo": "devshell",
+        "type": "github"
+      }
+    },
+    "emacs-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": "nixpkgs-stable"
+      },
+      "locked": {
+        "lastModified": 1741945480,
+        "narHash": "sha256-D80QGijmeVxm/4fJVd53dP8MHCLcn+JjtgniaGKIXvg=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "5d6c484290f0754ce745ea6f7e2b7d037bdc7b76",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
         "type": "github"
       }
     },
@@ -546,6 +551,22 @@
     },
     "nixpkgs-stable": {
       "locked": {
+        "lastModified": 1741862977,
+        "narHash": "sha256-prZ0M8vE/ghRGGZcflvxCu40ObKaB+ikn74/xQoNrGQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cdd2ef009676ac92b715ff26630164bb88fec4e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-24.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-stable_2": {
+      "locked": {
         "lastModified": 1740603184,
         "narHash": "sha256-t+VaahjQAWyA+Ctn2idyo1yxRIYpaDxMgHkgCNiMJa4=",
         "owner": "nixos",
@@ -628,29 +649,16 @@
         "type": "github"
       }
     },
-    "plugin-cozy-bear": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-G7Y/sUHRvV0ue6sIeOQ2yEfsCa2mLAGBz7Tum56P/pw=",
-        "type": "file",
-        "url": "https://github.com/ebadfd/cozy-bear-nvim/"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/ebadfd/cozy-bear-nvim/"
-      }
-    },
     "root": {
       "inputs": {
-        "base16-tmux": "base16-tmux",
+        "emacs-overlay": "emacs-overlay",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-stable": "nixpkgs-stable",
+        "nixpkgs-stable": "nixpkgs-stable_2",
         "nixvim": "nixvim",
-        "plugin-cozy-bear": "plugin-cozy-bear",
         "stylix": "stylix"
       }
     },

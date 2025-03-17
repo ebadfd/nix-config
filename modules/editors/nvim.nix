@@ -205,7 +205,6 @@
           repo = "cozy-bear-nvim";
           rev = version;
           sha256 = "sha256-adAUG8RShe1SJ/VwQ4lS2xFmEuiNjvOL1SPht64eS28=";
-          # sha256 = lib.fakeSha256;
         };
       })
     ];

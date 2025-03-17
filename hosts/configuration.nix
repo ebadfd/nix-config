@@ -139,6 +139,9 @@ in
       fluxcd
       signal-desktop
       supersonic # music player
+      cmake
+      clang
+      libtool
     ] ++
     (with stable; [
       # Apps
