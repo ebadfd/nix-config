@@ -19,6 +19,8 @@ let
   # https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm
   ublockOriginExtensionId = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
 
+  # manually disableing webgl seems to fix the issue with youtube video playback.
+  # chrome://flags/#disable-webgl
   personalPreferences = {
     partition =  {
       default_zoom_level=  {

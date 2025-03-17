@@ -50,13 +50,15 @@
   };
 
   stylix.opacity = {
-   terminal  = 0.5;
+   terminal  = 0.8;
   };
 
   stylix.targets = {
     console.enable = true;
     grub.enable = true; 
-    gtk.enable = true;
+    gtk = {
+      enable = true;
+    };
     nixos-icons.enable = true;
 
     plymouth = {
@@ -68,6 +70,7 @@
 
   home-manager.users.${vars.user} = {
     stylix.targets = {
+       emacs.enable = false;
        feh.enable = true;
        tmux.enable = false;
     };

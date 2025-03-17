@@ -8,5 +8,6 @@
   ./fastfetch.nix
   ./chromium.nix
   ./bitwaden.nix
+  ./lsp-servers.nix
 ]
 

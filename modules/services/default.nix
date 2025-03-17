@@ -5,4 +5,5 @@
   ./ratbagd.nix
   ./podman.nix
   ./twingate.nix
+  ./picom.nix
 ]
