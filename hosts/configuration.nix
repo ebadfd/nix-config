@@ -142,6 +142,7 @@ in
       cmake
       clang
       libtool
+      hurl
     ] ++
     (with stable; [
       # Apps
