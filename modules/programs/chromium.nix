@@ -19,6 +19,9 @@ let
   # https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm
   ublockOriginExtensionId = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
 
+  # https://chromewebstore.google.com/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc
+  surfingkeysExtensionId  = "gfbliohnnapiefjpjlpjnehglfpaknnc";
+
   # manually disableing webgl seems to fix the issue with youtube video playback.
   # chrome://flags/#disable-webgl
   personalPreferences = {
@@ -189,6 +192,16 @@ in
           id = bitwardenExtensionId;
           sha256 = "sha256:1vsvswam4bz0j1sc7ig0xnysshjwj4x7nnzlic711jasf5c3sg3p";
           version = "2025.2.1";
+        })
+        (createChromiumExtension {
+          id = surfingkeysExtensionId;
+          sha256 = "sha256:04ybl87jglk0v46ksxzfbnx9pdm0m5rgjdshx4mq0lakps1bss5q";
+          version = "1.17.7";
+        })
+        (createChromiumExtension {
+          id = surfingkeysExtensionId;
+          sha256 = "sha256:04ybl87jglk0v46ksxzfbnx9pdm0m5rgjdshx4mq0lakps1bss5q";
+          version = "1.17.7";
         })
       ];
     };

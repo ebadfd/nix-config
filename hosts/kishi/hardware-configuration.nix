@@ -20,7 +20,10 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/04eb8b64-b31e-44ee-8393-fc5181b5a330"; }
+    [ 
+      {
+        device = "/dev/disk/by-uuid/04eb8b64-b31e-44ee-8393-fc5181b5a330";
+      }
     ];
 
   networking = with host; {
