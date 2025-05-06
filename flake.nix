@@ -33,6 +33,12 @@
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # MacOS Package Management
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -45,6 +51,7 @@
     , home-manager
     , firefox-addons
     , emacs-overlay
+    , nix-darwin
     , home-manager-stable
     , ...
     }:
@@ -63,6 +70,13 @@
         import ./hosts {
           inherit (nixpkgs) lib;
           inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix emacs-overlay  nixvim firefox-addons vars;
+        }
+      );
+
+      darwinConfigurations = (
+        import ./darwin {
+          inherit (nixpkgs) lib;
+          inherit inputs nixpkgs nixpkgs-stable home-manager nix-darwin nixvim vars;
         }
       );
     };
