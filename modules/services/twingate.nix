@@ -2,7 +2,7 @@
 {
   config = lib.mkIf (config.twingate.enable) {
     services.twingate = {
-      enable = false;
+      enable = true;
     };
   };
 }
