@@ -7,7 +7,7 @@
 
         userName  = vars.user;
         userEmail = vars.email;
-        signing.key = "23F4D4A69DB69784";
+        # signing.key = "23F4D4A69DB69784";
 
         extraConfig = {
           push = { autoSetupRemote = true; };

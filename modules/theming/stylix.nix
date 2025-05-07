@@ -41,31 +41,31 @@
       applications = 10;
       desktop = 12;
       popups = 10;
-      terminal = 12;
+      terminal = if pkgs.stdenv.isLinux then 12 else 14;
     };
   };
 
-  stylix.cursor = lib.mkIf pkgs.stdenv.isLinux {
-    size = 16;
-  };
+  # stylix.cursor = lib.mkIf pkgs.stdenv.isLinux {
+  #  size = 16;
+  # };
 
   stylix.opacity = {
    terminal  = 0.8;
   };
 
-  stylix.targets = lib.mkIf pkgs.stdenv.isLinux {
-    console.enable = true;
-    grub.enable = true;
-    gtk = {
-      enable = true;
-    };
-    nixos-icons.enable = true;
-    plymouth = {
-      enable = true;
-      logo = ./boot.jpg;
-      logoAnimated = false;
-    };
-  };
+  # stylix.targets = lib.mkIf pkgs.stdenv.isLinux {
+  #  console.enable = true;
+  #  grub.enable = true;
+  #  gtk = {
+  #    enable = true;
+  #  };
+  #  nixos-icons.enable = true;
+  #  plymouth = {
+  #    enable = true;
+  #    logo = ./boot.jpg;
+  #    logoAnimated = false;
+  #  };
+  #};
 
   home-manager.users.${vars.user} = {
     stylix.targets = {

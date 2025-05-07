@@ -41,7 +41,6 @@
     casks = [
       "obs"
       "vlc"
-      # "canon-eos-utility"
     ];
   };
 
