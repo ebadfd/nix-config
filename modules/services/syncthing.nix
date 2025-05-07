@@ -1,4 +1,9 @@
-{ config, lib, vars, ... }:
+{
+  config,
+  lib,
+  vars,
+  ...
+}:
 {
   config = lib.mkIf (config.syncthing.enable) {
     services.syncthing = {

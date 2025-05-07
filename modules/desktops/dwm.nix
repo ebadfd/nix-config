@@ -1,4 +1,10 @@
-{ config, lib, pkgs, vars, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  vars,
+  ...
+}:
 
 with lib;
 {
@@ -57,40 +63,39 @@ with lib;
         windowManager.command = "while type dwm > ~/.dwm.log; do dwm && continue || break; done";
 
         profileExtra = ''
-          # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
-          if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-            eval $(dbus-launch --exit-with-session --sh-syntax)
-          fi
-          systemctl --user import-environment DISPLAY XAUTHORITY
+                    # https://nixos.wiki/wiki/Using_X_without_a_Display_Manager
+                    if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+                      eval $(dbus-launch --exit-with-session --sh-syntax)
+                    fi
+                    systemctl --user import-environment DISPLAY XAUTHORITY
 
-          if command -v dbus-update-activation-environment >/dev/null 2>&1; then
-            dbus-update-activation-environment DISPLAY XAUTHORITY
-          fi
+                    if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+                      dbus-update-activation-environment DISPLAY XAUTHORITY
+                    fi
 
-          # Fix Java applications not rendering correctly on DWM
-          export _JAVA_AWT_WM_NONREPARENTING=1
-	  
-          slstatus &
-          nm-applet &
-          blueman-applet &
+                    # Fix Java applications not rendering correctly on DWM
+                    export _JAVA_AWT_WM_NONREPARENTING=1
+          	  
+                    slstatus &
+                    nm-applet &
+                    blueman-applet &
 
-          ~/.fehbg
+                    ~/.fehbg
         '';
       };
       home = {
         file.".xinitrc" = {
           executable = true;
-          text =
-            ''
-              $HOME/.xsession
-            '';
+          text = ''
+            $HOME/.xsession
+          '';
         };
       };
     };
 
     environment = {
       systemPackages = with pkgs; [
-	slstatus
+        slstatus
       ];
     };
   };

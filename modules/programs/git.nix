@@ -5,12 +5,14 @@
       git = {
         enable = true;
 
-        userName  = vars.user;
+        userName = vars.user;
         userEmail = vars.email;
         # signing.key = "23F4D4A69DB69784";
 
         extraConfig = {
-          push = { autoSetupRemote = true; };
+          push = {
+            autoSetupRemote = true;
+          };
           commit.gpgsign = true;
         };
 

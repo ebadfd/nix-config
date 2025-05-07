@@ -1,9 +1,14 @@
-{ pkgs,  lib, vars, ... }:
-let 
+{
+  pkgs,
+  lib,
+  vars,
+  ...
+}:
+let
   defaultProfile = {
     DefaultBrowserSettingEnabled = false;
     DnsOverHttpsMode = "automatic";
-    DnsOverHttpsTemplatesWithIdentifiers  =  "https://cloudflare-dns.com/dns-query https://dns.quad9.net/dns-query{?dns}";
+    DnsOverHttpsTemplatesWithIdentifiers = "https://cloudflare-dns.com/dns-query https://dns.quad9.net/dns-query{?dns}";
     HomepageLocation = "https://homepage.ebadfd.tech/";
     NewTabPageLocation = "https://homepage.ebadfd.tech/";
   };
@@ -20,68 +25,68 @@ let
   ublockOriginExtensionId = "cjpalhdlnbpafiamejdnhcphjbkeiagm";
 
   # https://chromewebstore.google.com/detail/surfingkeys/gfbliohnnapiefjpjlpjnehglfpaknnc
-  surfingkeysExtensionId  = "gfbliohnnapiefjpjlpjnehglfpaknnc";
+  surfingkeysExtensionId = "gfbliohnnapiefjpjlpjnehglfpaknnc";
 
   # manually disableing webgl seems to fix the issue with youtube video playback.
   # chrome://flags/#disable-webgl
   personalPreferences = {
-    partition =  {
-      default_zoom_level=  {
-        x =  -0.5778829311823857;
+    partition = {
+      default_zoom_level = {
+        x = -0.5778829311823857;
       };
     };
     profile = {
-      avatar_index =  34;
+      avatar_index = 34;
       name = "Personal";
     };
     browser = {
       has_seen_welcome_page = true;
       theme = {
         color_variant = 1;
-        user_color = -15653309; #181b23
+        user_color = -15653309; # 181b23
       };
     };
     pinned_extensions = [
       bitwardenExtensionId
       ublockOriginExtensionId
     ];
-    extensions =  {
-      alerts =  {
-        initialized =  true;
+    extensions = {
+      alerts = {
+        initialized = true;
       };
-      partition =  {
-        default_zoom_level=  {
-          x =  -0.5778829311823857;
+      partition = {
+        default_zoom_level = {
+          x = -0.5778829311823857;
         };
       };
-      commands =  {
-        "linux:Ctrl+Shift+9" =  {
+      commands = {
+        "linux:Ctrl+Shift+9" = {
           command_name = "generate_password";
-          extension =  bitwardenExtensionId;
-          global =  false;
+          extension = bitwardenExtensionId;
+          global = false;
         };
-        "linux:Ctrl+Shift+L" =  {
-          command_name =  "autofill_login";
-          extension =  bitwardenExtensionId;
-          global =  false;
+        "linux:Ctrl+Shift+L" = {
+          command_name = "autofill_login";
+          extension = bitwardenExtensionId;
+          global = false;
         };
-        "linux:Ctrl+Shift+U" =  {
-          command_name =  "_execute_action";
-          extension =  bitwardenExtensionId;
-          global =  false;
+        "linux:Ctrl+Shift+U" = {
+          command_name = "_execute_action";
+          extension = bitwardenExtensionId;
+          global = false;
         };
       };
     };
   };
 
   workPreferences = {
-    partition =  {
-      default_zoom_level=  {
-        x =  -0.5778829311823857;
+    partition = {
+      default_zoom_level = {
+        x = -0.5778829311823857;
       };
     };
     profile = {
-      avatar_index =  30;
+      avatar_index = 30;
       name = "Work";
     };
     pinned_extensions = [
@@ -129,13 +134,13 @@ let
     CloudReportingEnabled = false;
     CloudProfileReportingEnabled = false;
     CloudExtensionRequestEnabled = false;
-    # QuicAllowed = false; # Disallow QUIC protocol 
+    # QuicAllowed = false; # Disallow QUIC protocol
     HardwareAccelerationModeEnabled = true;
 
-    # AI History Search is a feature that allows users to search their browsing history 
+    # AI History Search is a feature that allows users to search their browsing history
     # and receive generated answers based on page contents and not just the page title and URL.
-    # https://chromeenterprise.google/policies/#HistorySearchSettings 
-    HistorySearchSettings = 2 ; # Do not allow the feature
+    # https://chromeenterprise.google/policies/#HistorySearchSettings
+    HistorySearchSettings = 2; # Do not allow the feature
 
     DownloadDirectory = "/tmp";
     DefaultSearchProviderEnabled = true;
@@ -144,14 +149,14 @@ let
     DefaultSearchProviderImageURL = "https://duckduckgo.com/favicon.ico";
 
     ClearBrowsingDataOnExitList = [
-     "browsing_history"
-     "download_history"
+      "browsing_history"
+      "download_history"
       # "cookies_and_other_site_data"
-     "cached_images_and_files"
-     "password_signin"
-     "autofill"
-     "site_settings"
-     "hosted_app_data"
+      "cached_images_and_files"
+      "password_signin"
+      "autofill"
+      "site_settings"
+      "hosted_app_data"
     ];
 
     DefaultNotificationsSetting = 2;
@@ -174,34 +179,38 @@ let
 
           # this implementation is based on the following flake
           # https://github.com/lrworth/chromium-bin-flake/blob/master/flake.nix
-          
+
           src = pkgs.fetchzip {
             url = "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac_Arm/${chromiumVersion}/chrome-mac.zip";
-              hash = "sha256-irv/gea1lZqv2ApV/VdS3tsw6P7nISUnW1VVyWfvjfk=";
+            hash = "sha256-irv/gea1lZqv2ApV/VdS3tsw6P7nISUnW1VVyWfvjfk=";
           };
-              nativeBuildInputs = [ pkgs.makeWrapper ];
+          nativeBuildInputs = [ pkgs.makeWrapper ];
 
-              installPhase = ''
-                mkdir -p "$out/bin" "$out/Applications"
-                mv -t "$out/Applications/" "Chromium.app/"
-                makeWrapper "$out/Applications/Chromium.app/Contents/MacOS/Chromium" "$out/bin/${pname}"
-              '';
+          installPhase = ''
+            mkdir -p "$out/bin" "$out/Applications"
+            mv -t "$out/Applications/" "Chromium.app/"
+            makeWrapper "$out/Applications/Chromium.app/Contents/MacOS/Chromium" "$out/bin/${pname}"
+          '';
 
           meta = with pkgs.lib; {
-            platforms = [ "aarch64-darwin"];
+            platforms = [ "aarch64-darwin" ];
           };
         };
 
         wrapped = pkgs.writeShellScriptBin "chromium" ''
           ${chromium-mac}/Chromium.app/Contents/MacOS/Chromium "$@"
         '';
-      in pkgs.symlinkJoin {
+      in
+      pkgs.symlinkJoin {
         name = "chromium-mac-wrapper";
         version = chromiumVersion;
-        paths = [ wrapped chromium-mac ];
+        paths = [
+          wrapped
+          chromium-mac
+        ];
       }
-  else
-    throw "Unsupported platform for Chromium";
+    else
+      throw "Unsupported platform for Chromium";
 in
 {
   home-manager.users.${vars.user} = {
@@ -209,47 +218,54 @@ in
       enable = true;
       package = chromePackage;
 
-      extensions = let
-        createChromiumExtensionFor = browserVersion: {
-          id,
-          sha256,
-          version,
-        }: {
-          inherit id;
-          crxPath = builtins.fetchurl {
-            url = "https://clients2.google.com/service/update2/crx?response=redirect&acceptformat=crx2,crx3&prodversion=${browserVersion}&x=id%3D${id}%26installsource%3Dondemand%26uc";
-            name = "${id}.crx";
-            inherit sha256;
-          };
-          inherit version;
-        };
-        createChromiumExtension = createChromiumExtensionFor (pkgs.lib.versions.major chromePackage.version);
-      in [
-        (createChromiumExtension {
-          id = ublockOriginExtensionId;
-          sha256 = "sha256:1lnk0k8zy0w33cxpv93q1am0d7ds2na64zshvbwdnbjq8x4sw5p6";
-          version = "1.62.0";
-        })
-        (createChromiumExtension {
-          id = bitwardenExtensionId;
-          sha256 = "sha256:1jh3yzyq3gl7d1xjs30wsfgbq493dmx7xdpis2b7p3fadn7jsrix";
-          version = "2025.2.1";
-        })
-        (createChromiumExtension {
-          id = surfingkeysExtensionId;
-          sha256 = "sha256:04ybl87jglk0v46ksxzfbnx9pdm0m5rgjdshx4mq0lakps1bss5q";
-          version = "1.17.7";
-        })
-        (createChromiumExtension {
-          id = surfingkeysExtensionId;
-          sha256 = "sha256:04ybl87jglk0v46ksxzfbnx9pdm0m5rgjdshx4mq0lakps1bss5q";
-          version = "1.17.7";
-        })
-      ];
+      extensions =
+        let
+          createChromiumExtensionFor =
+            browserVersion:
+            {
+              id,
+              sha256,
+              version,
+            }:
+            {
+              inherit id;
+              crxPath = builtins.fetchurl {
+                url = "https://clients2.google.com/service/update2/crx?response=redirect&acceptformat=crx2,crx3&prodversion=${browserVersion}&x=id%3D${id}%26installsource%3Dondemand%26uc";
+                name = "${id}.crx";
+                inherit sha256;
+              };
+              inherit version;
+            };
+          createChromiumExtension = createChromiumExtensionFor (
+            pkgs.lib.versions.major chromePackage.version
+          );
+        in
+        [
+          (createChromiumExtension {
+            id = ublockOriginExtensionId;
+            sha256 = "sha256:1lnk0k8zy0w33cxpv93q1am0d7ds2na64zshvbwdnbjq8x4sw5p6";
+            version = "1.62.0";
+          })
+          (createChromiumExtension {
+            id = bitwardenExtensionId;
+            sha256 = "sha256:1jh3yzyq3gl7d1xjs30wsfgbq493dmx7xdpis2b7p3fadn7jsrix";
+            version = "2025.2.1";
+          })
+          (createChromiumExtension {
+            id = surfingkeysExtensionId;
+            sha256 = "sha256:04ybl87jglk0v46ksxzfbnx9pdm0m5rgjdshx4mq0lakps1bss5q";
+            version = "1.17.7";
+          })
+          (createChromiumExtension {
+            id = surfingkeysExtensionId;
+            sha256 = "sha256:04ybl87jglk0v46ksxzfbnx9pdm0m5rgjdshx4mq0lakps1bss5q";
+            version = "1.17.7";
+          })
+        ];
     };
 
-    #  Library/Application\ Support/Google/Chrome/Default 
-   home.file = {
+    #  Library/Application\ Support/Google/Chrome/Default
+    home.file = {
       ".config/chromium/Default/Preferences".text = builtins.toJSON personalPreferences;
       ".config/chromium/Profile 1/Preferences".text = builtins.toJSON workPreferences;
     };

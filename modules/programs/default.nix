@@ -10,4 +10,3 @@
   ./bitwaden.nix
   ./lsp-servers.nix
 ]
-

@@ -1,4 +1,10 @@
-{ config, lib, pkgs, vars, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  vars,
+  ...
+}:
 
 with lib;
 {
@@ -37,9 +43,12 @@ with lib;
         gnome-tweaks
         yelp
       ];
-      gnome.excludePackages = (with pkgs; [
-        # gnome-tour
-      ]);
+      gnome.excludePackages = (
+        with pkgs;
+        [
+          # gnome-tour
+        ]
+      );
     };
 
     home-manager.users.${vars.user} = {
@@ -91,4 +100,3 @@ with lib;
     };
   };
 }
-

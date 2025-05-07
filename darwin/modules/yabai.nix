@@ -1,4 +1,10 @@
-{ config, lib, pkgs, vars, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  vars,
+  ...
+}:
 
 with lib;
 {
@@ -76,5 +82,3 @@ with lib;
     };
   };
 }
-
-

@@ -1,10 +1,15 @@
-{ pkgs, lib, vars, ... }:
+{
+  pkgs,
+  lib,
+  vars,
+  ...
+}:
 {
   home-manager.users.${vars.user} = {
-   home.sessionPath = [
+    home.sessionPath = [
       "$HOME/.local/bin"
-   ];
-   home.file = {
+    ];
+    home.file = {
       ".local/bin/tmux-sessionizer" = {
         source = ./bin/tmux-sessionizer;
         executable = true;
@@ -29,8 +34,8 @@
       phases = [ "installPhase" ];
 
       installPhase = ''
-          mkdir -p $out/bin
-          tar -xf $src -C $out/bin
+        mkdir -p $out/bin
+        tar -xf $src -C $out/bin
       '';
     })
   ];

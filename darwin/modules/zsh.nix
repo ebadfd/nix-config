@@ -21,8 +21,8 @@
           v = "nvim";
           k = "kubectl";
           pbcopy = "xclip -selection clipboard";
-          nix-shell="nix-shell --run zsh";
-          nix-develop="nix develop -c zsh";
+          nix-shell = "nix-shell --run zsh";
+          nix-develop = "nix develop -c zsh";
 
           killbt = "rfkill block bluetooth";
           unKillbt = "rfkill unblock bluetooth";
@@ -30,7 +30,13 @@
 
         oh-my-zsh = {
           enable = true;
-          plugins = [ "git" "aliases" "aws" "battery" "macos"];
+          plugins = [
+            "git"
+            "aliases"
+            "aws"
+            "battery"
+            "macos"
+          ];
           theme = "refined";
         };
       };
