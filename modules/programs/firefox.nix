@@ -1,4 +1,4 @@
-{ inputs, vars, ... }:
+{ inputs, pkgs, vars, ... }:
   let
     lock-false = {
       Value = false;
@@ -13,7 +13,7 @@
   home-manager.users.${vars.user} = {
   programs = {
     firefox = {
-      enable = false;
+      enable = true;
       languagePacks = [ "si" "en-US" ];
 
       profiles.${vars.user} = {
@@ -187,7 +187,9 @@
 }
 #main-window #TabsToolbar > .toolbar-items { height: 0 !important; }
         '';
-        extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+      extensions = with (if pkgs.stdenv.isDarwin
+                     then inputs.firefox-addons.packages."aarch64-darwin"
+                     else inputs.firefox-addons.packages."x86_64-linux"); [
           bitwarden
           ublock-origin
           sidebery

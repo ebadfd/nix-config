@@ -45,28 +45,28 @@
     };
   };
 
-  stylix.cursor = {
-    size = 16;
-  };
+  # stylix.cursor = {
+  #  size = 16;
+  # };
 
   stylix.opacity = {
    terminal  = 0.8;
   };
 
-  stylix.targets = {
-    console.enable = true;
-    grub.enable = true; 
-    gtk = {
-      enable = true;
-    };
-    nixos-icons.enable = true;
-
-    plymouth = {
-      enable = true;
-      logo = ./boot.jpg;
-      logoAnimated = false;
-    };
-  };
+#  stylix.targets = {
+    # console.enable = true;
+    # grub.enable = true; 
+#    gtk = {
+#      enable = true;
+#    };
+#    nixos-icons.enable = true;
+#
+  #  plymouth = {
+  #    enable = true;
+  #    logo = ./boot.jpg;
+  #    logoAnimated = false;
+  #  };
+  # };
 
   home-manager.users.${vars.user} = {
     stylix.targets = {

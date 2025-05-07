@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, nixpkgs-stable, nix-darwin, home-manager, nixvim, vars, ... }:
+{ inputs, nixpkgs, nixpkgs-stable, nix-darwin, home-manager, nixvim, stylix, vars, ... }:
 
 let
   systemConfig = system: {
@@ -23,6 +23,7 @@ in
       inherit system;
       specialArgs = { inherit inputs system pkgs stable vars; };
       modules = [
+       stylix.darwinModules.stylix
         ./darwin-configuration.nix
         ./m1.nix
         nixvim.nixDarwinModules.nixvim

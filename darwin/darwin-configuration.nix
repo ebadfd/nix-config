@@ -62,6 +62,7 @@
     '';
   };
 
+  ids.gids.nixbld = 350;
   system = {
     stateVersion = 4;
   };

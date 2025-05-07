@@ -16,7 +16,7 @@
 
   programs.nixvim = {
     enable = true;
-    defaultEditor = true;
+    # defaultEditor = true;
 
     globals = {
       # Set <space> as the leader key

@@ -1,9 +1,9 @@
 { config, lib, pkgs, vars, ... }:
 
 {
-  # imports = import (./modules);
+  imports = import (./modules);
 
-  aerospace.enable = true;
+  yabai.enable = true;
 
   environment = {
     systemPackages = with pkgs; [
@@ -32,13 +32,13 @@
         autohide = true;
         autohide-delay = 0.2;
         autohide-time-modifier = 0.1;
-        magnification = true;
+        magnification = false;
         mineffect = "scale";
         # minimize-to-application = true;
         orientation = "bottom";
         showhidden = false;
         show-recents = false;
-        tilesize = 20;
+        tilesize = 40;
       };
       finder = {
         ShowPathbar = true;
@@ -47,9 +47,6 @@
       trackpad = {
         Clicking = true;
         TrackpadRightClick = true;
-      };
-      magicmouse = {
-        MouseButtonMode = "TwoButton";
       };
 
       CustomUserPreferences = {

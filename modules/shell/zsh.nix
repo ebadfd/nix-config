@@ -34,4 +34,3 @@ source /home/${vars.user}/.zsh_profile
     shell = pkgs.zsh;
   };
 }
-

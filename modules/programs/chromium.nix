@@ -1,4 +1,4 @@
-{ pkgs, vars, ... }:
+{ pkgs,  lib, vars, ... }:
 let 
   defaultProfile = {
     DefaultBrowserSettingEnabled = false;
@@ -159,7 +159,49 @@ let
     # 2 = Do not allow any site to show desktop notifications
     # 3 = Ask every time a site wants to show desktop notifications
   };
-  chromePackage = pkgs.ungoogled-chromium;
+  # chromePackage = pkgs.google-chrome;
+
+  chromePackage =
+    if pkgs.stdenv.isLinux then
+      pkgs.ungoogled-chromium
+    else if pkgs.stdenv.isDarwin && pkgs.stdenv.isAarch64 then
+      let
+        chromiumVersion = "1456749";
+        chromium-mac = pkgs.stdenv.mkDerivation rec {
+          name = "chromium-bin";
+          pname = "Chromium";
+          buildInputs = [ pkgs.undmg ];
+
+          # this implementation is based on the following flake
+          # https://github.com/lrworth/chromium-bin-flake/blob/master/flake.nix
+          
+          src = pkgs.fetchzip {
+            url = "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac_Arm/${chromiumVersion}/chrome-mac.zip";
+              hash = "sha256-irv/gea1lZqv2ApV/VdS3tsw6P7nISUnW1VVyWfvjfk=";
+          };
+              nativeBuildInputs = [ pkgs.makeWrapper ];
+
+              installPhase = ''
+                mkdir -p "$out/bin" "$out/Applications"
+                mv -t "$out/Applications/" "Chromium.app/"
+                makeWrapper "$out/Applications/Chromium.app/Contents/MacOS/Chromium" "$out/bin/${pname}"
+              '';
+
+          meta = with pkgs.lib; {
+            platforms = [ "aarch64-darwin"];
+          };
+        };
+
+        wrapped = pkgs.writeShellScriptBin "chromium" ''
+          ${chromium-mac}/Chromium.app/Contents/MacOS/Chromium "$@"
+        '';
+      in pkgs.symlinkJoin {
+        name = "chromium-mac-wrapper";
+        version = chromiumVersion;
+        paths = [ wrapped chromium-mac ];
+      }
+  else
+    throw "Unsupported platform for Chromium";
 in
 {
   home-manager.users.${vars.user} = {
@@ -185,12 +227,12 @@ in
       in [
         (createChromiumExtension {
           id = ublockOriginExtensionId;
-          sha256 = "sha256:0ycnkna72n969crgxfy2lc1qbndjqrj46b9gr5l9b7pgfxi5q0ll";
+          sha256 = "sha256:1lnk0k8zy0w33cxpv93q1am0d7ds2na64zshvbwdnbjq8x4sw5p6";
           version = "1.62.0";
         })
         (createChromiumExtension {
           id = bitwardenExtensionId;
-          sha256 = "sha256:1vsvswam4bz0j1sc7ig0xnysshjwj4x7nnzlic711jasf5c3sg3p";
+          sha256 = "sha256:1jh3yzyq3gl7d1xjs30wsfgbq493dmx7xdpis2b7p3fadn7jsrix";
           version = "2025.2.1";
         })
         (createChromiumExtension {
@@ -206,17 +248,32 @@ in
       ];
     };
 
+    #  Library/Application\ Support/Google/Chrome/Default 
    home.file = {
       ".config/chromium/Default/Preferences".text = builtins.toJSON personalPreferences;
       ".config/chromium/Profile 1/Preferences".text = builtins.toJSON workPreferences;
     };
   };
 
-  environment  = {
-    etc = {
-      "/chromium/policies/managed/default.json".text = builtins.toJSON defaultProfile;
-      "/chromium/policies/managed/extra.json".text = builtins.toJSON extraOpts;
-      "/chromium/policies/recommended/recommended_policies.json".text = builtins.toJSON recommendedOpts;
-    };
+  environment.etc = lib.mkIf pkgs.stdenv.isLinux {
+    "chromium/policies/managed/default.json".text = builtins.toJSON defaultProfile;
+    "chromium/policies/managed/extra.json".text = builtins.toJSON extraOpts;
+    "chromium/policies/recommended/recommended_policies.json".text = builtins.toJSON recommendedOpts;
   };
+
+  system.activationScripts.chromePrefs.text = lib.mkIf pkgs.stdenv.isDarwin ''
+    mkdir -p /Library/Google/Chrome/ManagedPreferences
+
+    cat > /Library/Google/Chrome/ManagedPreferences/default.json <<EOF
+    ${builtins.toJSON defaultProfile}
+    EOF
+
+    cat > /Library/Google/Chrome/ManagedPreferences/extra.json <<EOF
+    ${builtins.toJSON extraOpts}
+    EOF
+
+    cat > /Library/Google/Chrome/ManagedPreferences/recommended_policies.json <<EOF
+    ${builtins.toJSON recommendedOpts}
+    EOF
+  '';
 }
