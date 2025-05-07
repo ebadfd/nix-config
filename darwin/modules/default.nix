@@ -1,8 +1,16 @@
 [
+  ./options.nix
+
   ./yabai.nix
   ./zsh.nix
+
+  # editors
   ../../modules/editors/nvim.nix
+
+  # styles
   ../../modules/theming/stylix.nix
+
+  # programs
   ../../modules/programs/tmux.nix
   ../../modules/programs/git.nix
   ../../modules/programs/bitwaden.nix

@@ -10,7 +10,6 @@ lib.mkMerge [
     stylix.enable = true;
 
     stylix.polarity = "dark";
-
     stylix.image = ./wall.jpg;
 
     stylix.base16Scheme = {

@@ -1,7 +1,7 @@
 { pkgs, vars, ... }:
 
 {
-  # imports = (import ./modules);
+  imports = (import ./modules);
 
   users.users.${vars.user} = {
     home = "/Users/${vars.user}";
@@ -14,12 +14,60 @@
       VISUAL = "${vars.editor}";
     };
     systemPackages = with pkgs; [
-      eza # Ls
-      git # Version Control
+      # Terminal
+      btop # Resource Manager
+      coreutils # GNU Utilities
       mas # Mac App Store $ mas search <app>
+      git # Version Control
+      killall # Process Killer
+      nano # Text Editor
+
+      nix-tree # Browse Nix Store
+      pciutils # Manage PCI
       ranger # File Manager
-      tldr # Help
-      wget # Download
+      tldr # Helper
+      usbutils # Manage USB
+      wget # Retriever
+      curl
+      xdg-utils # Environment integration
+      vim # VIM
+
+      feh # Image Viewer
+      mpv # Media Player
+
+      # Apps
+      remmina # XRDP & VNC Client
+
+      # File Management
+      unzip # Zip Files
+      unrar # Rar Files
+      zip # Zip
+
+      dmenu # dmenu
+
+      gnupg # pgp
+      gnumake
+      ripgrep # rip grep
+
+      dbgate # database management
+      pgadmin4-desktopmode # postgresql management
+
+      awscli2 # aws cli
+      kubectl # kubernets cli
+
+      dig # domain name server
+
+      # Other Packages Found @
+      # - ./<host>/default.nix
+      # - ../modules
+      nmap
+      terraform
+      fluxcd
+      signal-desktop
+      cmake
+      clang
+      libtool
+      hurl
     ];
   };
 
@@ -38,10 +86,7 @@
       upgrade = false;
       cleanup = "zap";
     };
-    casks = [
-      "obs"
-      "vlc"
-    ];
+    casks = pkgs.callPackage ./casks.nix { };
   };
 
   home-manager.users.${vars.user} = {

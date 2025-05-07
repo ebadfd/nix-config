@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   vars,
   ...
 }:
@@ -11,29 +10,54 @@
 
   yabai.enable = true;
 
-  environment = {
-    systemPackages = with pkgs; [
-    ];
-  };
-
-  homebrew = {
-    casks = [
-      "postman"
-    ];
-    masApps = {
-    };
-  };
-
   system = {
     defaults = {
+      # Whether to enable quarantine for downloaded applications. The default is true.
+      LaunchServices.LSQuarantine = false;
+
       NSGlobalDomain = {
+        AppleInterfaceStyle = "Dark";
+        # Configures the keyboard control behavior. Mode 3 enables full keyboard control.
+        AppleKeyboardUIMode = 3;
+        AppleICUForce24HourTime = true;
+
         AppleShowAllExtensions = true;
+        AppleShowAllFiles = true;
+        AppleSpacesSwitchOnActivate = true;
+
         NSAutomaticCapitalizationEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
+        NSAutomaticPeriodSubstitutionEnabled = false;
+        NSAutomaticWindowAnimationsEnabled = false;
+
+        NSDocumentSaveNewDocumentsToCloud = false;
+
+        NSTableViewDefaultSizeMode = 2;
+
+        # hide the menu bar
+        _HIHideMenuBar = true;
+
+        # beep/alert volume
+        "com.apple.sound.beep.volume" = 0.000;
         "com.apple.mouse.tapBehavior" = 1;
         "com.apple.trackpad.enableSecondaryClick" = true;
+        "com.apple.swipescrolldirection" = false;
+
         # "com.apple.keyboard.fnState" = true;
       };
+
+      alf = {
+        globalstate = 1;
+        stealthenabled = 1;
+      };
+
+      controlcenter = {
+        AirDrop = false;
+        BatteryShowPercentage = true;
+        Display = false;
+
+      };
+
       dock = {
         autohide = true;
         autohide-delay = 0.2;
@@ -46,13 +70,37 @@
         show-recents = false;
         tilesize = 40;
       };
+
       finder = {
         ShowPathbar = true;
         ShowStatusBar = true;
+        AppleShowAllExtensions = true;
+        CreateDesktop = false;
+        FXDefaultSearchScope = "SCcf";
+        FXEnableExtensionChangeWarning = false;
+        FXRemoveOldTrashItems = true;
+        ShowExternalHardDrivesOnDesktop = false;
+        ShowHardDrivesOnDesktop = false;
       };
+
       trackpad = {
         Clicking = true;
         TrackpadRightClick = true;
+      };
+
+      loginwindow = {
+        DisableConsoleAccess = true;
+        GuestEnabled = false;
+      };
+
+      menuExtraClock = {
+        IsAnalog = true;
+        Show24Hour = true;
+        ShowDate = 0;
+      };
+
+      screencapture = {
+        disable-shadow = true;
       };
 
       CustomUserPreferences = {
@@ -60,7 +108,7 @@
         "com.apple.finder" = {
           # Set home directory as startup window
           NewWindowTargetPath = "file:///Users/${vars.user}/";
-          NewWindowTarget = "PfHm";
+          WarnOnEmptyTrash = false;
           # Set search scope to directory
           FXDefaultSearchScope = "SCcf";
           # Multi-file tab view
