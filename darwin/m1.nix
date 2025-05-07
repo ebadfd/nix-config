@@ -1,7 +1,7 @@
 { config, lib, pkgs, vars, ... }:
 
 {
-  imports = import (./modules);
+  # imports = import (./modules);
 
   aerospace.enable = true;
 
