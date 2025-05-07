@@ -1,6 +1,5 @@
 [
   ./yabai.nix
-  ./alacritty.nix
   ./zsh.nix
   ../../modules/editors/nvim.nix
   ../../modules/theming/stylix.nix
@@ -9,4 +8,5 @@
   ../../modules/programs/bitwaden.nix
   ../../modules/programs/firefox.nix
   ../../modules/programs/chromium.nix
+  ../../modules/programs/alacritty.nix
 ]

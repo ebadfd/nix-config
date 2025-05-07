@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib,  ... }:
 {
   imports = [
     ./plugins/gitsigns.nix
@@ -14,9 +14,8 @@
     ./plugins/kickstart/plugins/indent-blankline.nix
   ];
 
-  programs.nixvim = {
+  programs.nixvim =  lib.mkMerge [{
     enable = true;
-    # defaultEditor = true;
 
     globals = {
       # Set <space> as the leader key
@@ -229,5 +228,9 @@
 
       ColorMyPencils()
     '';
-  };
+  }
+  (lib.mkIf pkgs.stdenv.isLinux {
+    defaultEditor = true;
+  })
+  ];
 }
