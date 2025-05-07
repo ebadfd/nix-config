@@ -15,7 +15,7 @@ let
 in
 {
   # MacBookPro,1 M1 14" Yuna
-  Yuna =
+  yuna =
     let
       inherit (systemConfig "aarch64-darwin") system pkgs stable;
     in

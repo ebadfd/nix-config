@@ -15,7 +15,6 @@
       "postman"
     ];
     masApps = {
-      "Keynote" = 409183694;
     };
   };
 
