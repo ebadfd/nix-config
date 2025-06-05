@@ -277,6 +277,7 @@ in
     "chromium/policies/recommended/recommended_policies.json".text = builtins.toJSON recommendedOpts;
   };
 
+  /*
   system.activationScripts.chromePrefs.text = lib.mkIf pkgs.stdenv.isDarwin ''
     mkdir -p /Library/Google/Chrome/ManagedPreferences
 
@@ -292,4 +293,5 @@ in
     ${builtins.toJSON recommendedOpts}
     EOF
   '';
+  */
 }

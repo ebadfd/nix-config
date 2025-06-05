@@ -79,6 +79,7 @@ in
       ./configuration.nix
       stylix.nixosModules.stylix
       nixvim.nixosModules.nixvim
+      mikuboot.nixosModules.default 
 
       nixos-hardware.nixosModules.lenovo-thinkpad-t480
       home-manager.nixosModules.home-manager

@@ -39,6 +39,12 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    mikuboot = {
+      url = "gitlab:evysgarden/mikuboot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -52,6 +58,7 @@
     , firefox-addons
     , emacs-overlay
     , nix-darwin
+    , mikuboot
     , home-manager-stable
     , ...
     }:
@@ -69,7 +76,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix emacs-overlay  nixvim firefox-addons vars;
+          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix emacs-overlay  nixvim firefox-addons mikuboot vars;
         }
       );
 
