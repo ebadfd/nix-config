@@ -278,20 +278,20 @@ in
   };
 
   /*
-  system.activationScripts.chromePrefs.text = lib.mkIf pkgs.stdenv.isDarwin ''
-    mkdir -p /Library/Google/Chrome/ManagedPreferences
+    system.activationScripts.chromePrefs.text = lib.mkIf pkgs.stdenv.isDarwin ''
+      mkdir -p /Library/Google/Chrome/ManagedPreferences
 
-    cat > /Library/Google/Chrome/ManagedPreferences/default.json <<EOF
-    ${builtins.toJSON defaultProfile}
-    EOF
+      cat > /Library/Google/Chrome/ManagedPreferences/default.json <<EOF
+      ${builtins.toJSON defaultProfile}
+      EOF
 
-    cat > /Library/Google/Chrome/ManagedPreferences/extra.json <<EOF
-    ${builtins.toJSON extraOpts}
-    EOF
+      cat > /Library/Google/Chrome/ManagedPreferences/extra.json <<EOF
+      ${builtins.toJSON extraOpts}
+      EOF
 
-    cat > /Library/Google/Chrome/ManagedPreferences/recommended_policies.json <<EOF
-    ${builtins.toJSON recommendedOpts}
-    EOF
-  '';
+      cat > /Library/Google/Chrome/ManagedPreferences/recommended_policies.json <<EOF
+      ${builtins.toJSON recommendedOpts}
+      EOF
+    '';
   */
 }

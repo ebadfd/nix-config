@@ -22,9 +22,9 @@
         alwaysEnsure = true;
         alwaysTangle = true;
 
-        defaultInitFile = pkgs.substituteAll {
+        defaultInitFile = pkgs.writeTextFile {
           name = "default.el";
-          src = ./emacs/init.el;
+          text = builtins.readFile ./emacs/init.el;
         };
 
         extraEmacsPackages = epkgs: [

@@ -17,6 +17,14 @@
       ".zsh_profile" = {
         source = ./bin/zsh_profile;
       };
+      ".local/bin/umacaddr" = {
+        source = ./bin/umacaddr;
+        executable = true;
+      };
+      ".local/bin/brctl" = {
+        source = ./bin/brctl;
+        executable = true;
+      };
     };
   };
 

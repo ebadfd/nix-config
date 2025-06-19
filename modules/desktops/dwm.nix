@@ -18,6 +18,7 @@ with lib;
   };
 
   config = mkIf (config.dwm.enable) {
+    programs.slock.enable = true;
     services = {
       libinput = {
         enable = true;
@@ -96,6 +97,7 @@ with lib;
     environment = {
       systemPackages = with pkgs; [
         slstatus
+        xautolock
       ];
     };
   };

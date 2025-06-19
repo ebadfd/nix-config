@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+BRIGHTNESS_PATH="/sys/class/backlight/intel_backlight"
+MAX=$(cat "$BRIGHTNESS_PATH/max_brightness")
+
+usage() {
+  echo "Usage: $0 <brightness>"
+  echo " - Provide value as raw (0-$MAX), e.g., 900"
+  echo " - Or as percentage, e.g., 50%"
+  exit 1
+}
+
+[ -z "$1" ] && usage
+
+if [[ "$1" == *% ]]; then
+  PERCENT=${1%%%}
+  if ! [[ "$PERCENT" =~ ^[0-9]+$ ]]; then
+    echo "Error: Invalid percentage."
+    usage
+  fi
+  VALUE=$((MAX * PERCENT / 100))
+else
+  if ! [[ "$1" =~ ^[0-9]+$ ]]; then
+    echo "Error: Invalid number."
+    usage
+  fi
+  VALUE=$1
+fi
+
+if [ "$VALUE" -lt 0 ] || [ "$VALUE" -gt "$MAX" ]; then
+  echo "Error: Brightness must be between 0 and $MAX"
+  exit 1
+fi
+
+echo "$VALUE" | sudo tee "$BRIGHTNESS_PATH/brightness" > /dev/null
+echo "Brightness set to $VALUE ($((VALUE * 100 / MAX))%)"

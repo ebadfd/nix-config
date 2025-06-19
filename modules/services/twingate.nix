@@ -9,5 +9,8 @@
     services.twingate = {
       enable = true;
     };
+    services.cloudflare-warp = {
+      enable = false;
+    };
   };
 }
