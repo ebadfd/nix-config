@@ -163,6 +163,8 @@ in
         clang
         libtool
         hurl
+
+        nixfmt-rfc-style
       ]
       ++ (with stable; [
         # Apps

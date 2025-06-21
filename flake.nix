@@ -44,7 +44,6 @@
       url = "gitlab:evysgarden/mikuboot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs =

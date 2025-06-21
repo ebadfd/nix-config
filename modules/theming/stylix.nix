@@ -32,9 +32,17 @@ lib.mkMerge [
     };
 
     stylix.fonts = {
-      serif = config.stylix.fonts.monospace;
-      sansSerif = config.stylix.fonts.monospace;
-      emoji = config.stylix.fonts.monospace;
+      sansSerif = {
+        package = pkgs.overpass;
+        name = "Overpass";
+      };
+
+      serif = config.stylix.fonts.sansSerif;
+
+      emoji = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
 
       monospace = {
         package = pkgs.nerd-fonts.fira-mono;
@@ -76,9 +84,7 @@ lib.mkMerge [
           gtk.enable = true;
           nixos-icons.enable = true;
           plymouth = {
-            enable = true;
-            logo = ./boot.jpg;
-            logoAnimated = false;
+            enable = false;
           };
         };
       }

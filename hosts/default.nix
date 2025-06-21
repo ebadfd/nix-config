@@ -7,6 +7,7 @@
   stylix,
   emacs-overlay,
   nixvim,
+  mikuboot,
   vars,
   ...
 }:

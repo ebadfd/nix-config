@@ -41,6 +41,8 @@
     }
   ];
 
+  hardware.graphics.enable = true;
+
   networking = with host; {
     useDHCP = lib.mkDefault true;
     hostName = hostName;
