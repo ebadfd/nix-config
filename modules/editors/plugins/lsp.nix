@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins.cmp-nvim-lsp = {
       enable = true;
@@ -39,7 +40,7 @@
           enable = true;
           filetypes = [
             "html"
-            "twig" 
+            "twig"
             "hbs"
           ];
         };

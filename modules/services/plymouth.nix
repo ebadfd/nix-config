@@ -1,9 +1,17 @@
-{ config, lib, pkgs, vars, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 {
   config = lib.mkIf (config.plymouth.enable) {
     boot = {
       plymouth = {
         enable = true;
+
+        themePackages = [ inputs.mikuboot.packages."x86_64-linux".default ];
+        theme = "mikuboot";
       };
 
       # Enable "Silent Boot"

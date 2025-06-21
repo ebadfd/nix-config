@@ -2,13 +2,13 @@
 {
   home-manager.users.${vars.user} = {
     home.file = {
-      ".emacs.d/config.org"= {
+      ".emacs.d/config.org" = {
         source = ./emacs/config.org;
       };
-      ".emacs.d/init.el"= {
+      ".emacs.d/init.el" = {
         source = ./emacs/init.el;
       };
-      ".emacs.d/themes/cozy-bear-theme.el"= {
+      ".emacs.d/themes/cozy-bear-theme.el" = {
         source = ./emacs/cozy-bear-theme.el;
       };
     };
@@ -22,9 +22,9 @@
         alwaysEnsure = true;
         alwaysTangle = true;
 
-        defaultInitFile = pkgs.substituteAll {
+        defaultInitFile = pkgs.writeTextFile {
           name = "default.el";
-          src = ./emacs/init.el;
+          text = builtins.readFile ./emacs/init.el;
         };
 
         extraEmacsPackages = epkgs: [
@@ -41,11 +41,14 @@
           pkgs.typescript-language-server
           pkgs.typescript
 
-          (pkgs.python3.withPackages (p: (with p; [
-            python-lsp-server
-            python-lsp-ruff
-            pylsp-mypy
-          ])))
+          (pkgs.python3.withPackages (
+            p:
+            (with p; [
+              python-lsp-server
+              python-lsp-ruff
+              pylsp-mypy
+            ])
+          ))
 
           pkgs.htmx-lsp
           pkgs.terraform-ls
@@ -55,7 +58,7 @@
           pkgs.autotools-language-server
 
           pkgs.shellcheck
-       ];
+        ];
       };
     };
   };

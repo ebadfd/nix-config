@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+IFACE="wlp3s0"
+
+NEW_MAC="BE:47:68:75:46:1A"
+
+sudo ip link set dev "$IFACE" down
+
+sudo ip link set dev "$IFACE" address "$NEW_MAC"
+
+sudo ip link set dev "$IFACE" up
+
+echo "MAC address for $IFACE changed to $NEW_MAC and interface brought up."

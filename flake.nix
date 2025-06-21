@@ -19,34 +19,48 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-   nixvim = {
-       url = "github:nix-community/nixvim/nixos-24.11";
-       inputs.nixpkgs.follows = "nixpkgs-stable";
-   };
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
-   firefox-addons = {
+    firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
-   };
+    };
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # MacOS Package Management
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    mikuboot = {
+      url = "gitlab:evysgarden/mikuboot";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    inputs @ { self
-    , nixpkgs
-    , nixpkgs-stable
-    , nixos-hardware
-    , stylix
-    , nixvim
-    , home-manager
-    , firefox-addons
-    , emacs-overlay
-    , home-manager-stable
-    , ...
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      nixos-hardware,
+      stylix,
+      nixvim,
+      home-manager,
+      firefox-addons,
+      emacs-overlay,
+      nix-darwin,
+      mikuboot,
+      home-manager-stable,
+      ...
     }:
     let
       vars = {
@@ -62,7 +76,35 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable nixos-hardware home-manager stylix emacs-overlay  nixvim firefox-addons vars;
+          inherit
+            inputs
+            nixpkgs
+            nixpkgs-stable
+            nixos-hardware
+            home-manager
+            stylix
+            emacs-overlay
+            nixvim
+            firefox-addons
+            mikuboot
+            vars
+            ;
+        }
+      );
+
+      darwinConfigurations = (
+        import ./darwin {
+          inherit (nixpkgs) lib;
+          inherit
+            inputs
+            nixpkgs
+            nixpkgs-stable
+            home-manager
+            nix-darwin
+            nixvim
+            stylix
+            vars
+            ;
         }
       );
     };

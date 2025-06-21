@@ -2,7 +2,14 @@
 #  GTK
 #
 
-{ lib, config, pkgs, host, vars, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  host,
+  vars,
+  ...
+}:
 
 {
   home-manager.users.${vars.user} = {
