@@ -2,12 +2,31 @@
 
 IFACE="wlp3s0"
 
-NEW_MAC="BE:47:68:75:46:1B"
+# static mac for office network
+STATIC_MAC="BE:47:68:75:46:1B"
+
+# lenovo OUIs
+LENOVO_OUIS=(
+  "FC:AA:14"
+  "F0:76:1C"
+  "00:26:2D"
+  "28:16:AD"
+  "40:25:C2"
+)
+
+generate_random_mac() {
+  local OUI=${LENOVO_OUIS[$RANDOM % ${#LENOVO_OUIS[@]}]}
+  printf "%s:%02X:%02X:%02X\n" "$OUI" $((RANDOM % 256)) $((RANDOM % 256)) $((RANDOM % 256))
+}
+
+if [[ "$1" == "static" ]]; then
+  NEW_MAC="$STATIC_MAC"
+else
+  NEW_MAC=$(generate_random_mac)
+fi
 
 sudo ip link set dev "$IFACE" down
-
 sudo ip link set dev "$IFACE" address "$NEW_MAC"
-
 sudo ip link set dev "$IFACE" up
 
 echo "MAC address for $IFACE changed to $NEW_MAC and interface brought up."
