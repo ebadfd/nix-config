@@ -217,7 +217,6 @@ in
     programs.chromium = {
       enable = true;
       package = chromePackage;
-      commandLineArgs = ["--enable-features=AcceleratedVideoDecodeLinuxGL"];
 
       extensions =
         let
@@ -245,12 +244,12 @@ in
           (createChromiumExtension {
             id = ublockOriginExtensionId;
             sha256 = "sha256:0pdh1v0vx1d5vnl1zh7nbk6j1fh4k4hhwp1ljs203icn306lahsn";
-            version = "1.62.0";
+            version = "1.64.0";
           })
           (createChromiumExtension {
             id = bitwardenExtensionId;
             sha256 = "sha256:0vlgm61wgp2gr2b7ys2pmasj7s202xjvv6h13inj41gbll1rpywn";
-            version = "2025.2.1";
+            version = "2025.5.1";
           })
           (createChromiumExtension {
             id = surfingkeysExtensionId;

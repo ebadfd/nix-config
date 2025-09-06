@@ -2,7 +2,7 @@
 
 IFACE="wlp3s0"
 
-NEW_MAC="BE:47:68:75:46:1A"
+NEW_MAC="BE:47:68:75:46:1B"
 
 sudo ip link set dev "$IFACE" down
 

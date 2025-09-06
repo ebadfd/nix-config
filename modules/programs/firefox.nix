@@ -46,7 +46,7 @@ in
               "Wikipedia (en)".metaData.hidden = true;
 
               "DuckDuckGo" = {
-                iconUpdateURL = "https://duckduckgo.com/favicon.ico";
+                icon = "https://duckduckgo.com/favicon.ico";
                 definedAliases = [ "@ddg" ];
                 urls = [
                   {
@@ -62,7 +62,7 @@ in
               };
 
               "YouTube" = {
-                iconUpdateURL = "https://youtube.com/favicon.ico";
+                icon = "https://youtube.com/favicon.ico";
                 updateInterval = 24 * 60 * 60 * 1000;
                 definedAliases = [ "@yt" ];
                 urls = [
@@ -79,7 +79,7 @@ in
               };
 
               "Google" = {
-                iconUpdateURL = "https://www.google.com/favicon.ico";
+                icon = "https://www.google.com/favicon.ico";
                 definedAliases = [ "@ggl" ];
                 urls = [
                   {
@@ -139,7 +139,7 @@ in
               };
 
               "SourceGraph" = {
-                iconUpdateURL = "https://sourcegraph.com/.assets/img/sourcegraph-mark.svg";
+                icon = "https://sourcegraph.com/.assets/img/sourcegraph-mark.svg";
                 definedAliases = [ "@sg" ];
 
                 urls = [
@@ -156,7 +156,7 @@ in
               };
 
               "GitHub" = {
-                iconUpdateURL = "https://github.com/favicon.ico";
+                icon = "https://github.com/favicon.ico";
                 updateInterval = 24 * 60 * 60 * 1000;
                 definedAliases = [ "@gh" ];
 
