@@ -24,6 +24,7 @@ with lib;
         enable = true;
         touchpad = {
           naturalScrolling = false;
+          accelSpeed = "0.5";
         };
       };
       displayManager = {

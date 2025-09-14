@@ -60,6 +60,37 @@ let
   lib = nixpkgs.lib;
 in
 {
+  # thinkpad p15v profile
+  yoru = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit
+        inputs
+        system
+        stable
+        vars
+        pkgs
+        ;
+      host = {
+        hostName = "yoru";
+      };
+    };
+    modules = [
+      ./yoru
+      ./configuration.nix
+      stylix.nixosModules.stylix
+      nixvim.nixosModules.nixvim
+      mikuboot.nixosModules.default
+
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.backupFileExtension = "hmbackup";
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+    ];
+  };
+
   # thinkpad t480 profile
   kishi = lib.nixosSystem {
     inherit system;

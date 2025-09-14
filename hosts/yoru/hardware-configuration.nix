@@ -22,12 +22,12 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/b201983a-80b5-46e6-83d8-c2e8a66dcc4e";
+    device = "/dev/disk/by-uuid/6085b3f8-973e-4e0f-98e2-f2b7bbf4fd35";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F041-11EF";
+    device = "/dev/disk/by-uuid/A336-6800";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -36,9 +36,6 @@
   };
 
   swapDevices = [
-    {
-      device = "/dev/disk/by-uuid/04eb8b64-b31e-44ee-8393-fc5181b5a330";
-    }
   ];
 
   hardware.graphics.enable = true;

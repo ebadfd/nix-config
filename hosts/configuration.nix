@@ -164,6 +164,9 @@ in
         libtool
         hurl
 
+        # vpn stuff
+        openvpn
+
         nixfmt-rfc-style
       ]
       ++ (with stable; [

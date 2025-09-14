@@ -9,5 +9,9 @@ all: rebuild cleanup
 rebuild:
 	nixos-rebuild switch --flake .#kishi
 
+workbuild:
+	nixos-rebuild switch --flake .#yoru
+
 cleanup:
 	find $(CONFIG_DIR) -type f -name $(BACKUP_PATTERN) -delete
+

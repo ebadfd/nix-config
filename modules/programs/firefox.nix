@@ -28,10 +28,10 @@ in
 
           search = {
             force = true;
-            default = "DuckDuckGo";
+            default = "ddg";
             order = [
-              "DuckDuckGo"
-              "Youtube"
+              "ddg"
+              "youtube"
               "Google"
               "NixOS Options"
               "Nix Packages"
@@ -40,12 +40,12 @@ in
             ];
 
             engines = {
-              "Bing".metaData.hidden = true;
-              "eBay".metaData.hidden = true;
-              "Amazon.com".metaData.hidden = true;
-              "Wikipedia (en)".metaData.hidden = true;
+              "bing".metaData.hidden = true;
+              "ebay".metaData.hidden = true;
+              "amazondotcom-us".metaData.hidden = true;
+              "wikipedia".metaData.hidden = true;
 
-              "DuckDuckGo" = {
+              "ddg" = {
                 icon = "https://duckduckgo.com/favicon.ico";
                 definedAliases = [ "@ddg" ];
                 urls = [
@@ -61,7 +61,7 @@ in
                 ];
               };
 
-              "YouTube" = {
+              "youtube" = {
                 icon = "https://youtube.com/favicon.ico";
                 updateInterval = 24 * 60 * 60 * 1000;
                 definedAliases = [ "@yt" ];
@@ -78,7 +78,7 @@ in
                 ];
               };
 
-              "Google" = {
+              "google" = {
                 icon = "https://www.google.com/favicon.ico";
                 definedAliases = [ "@ggl" ];
                 urls = [
