@@ -32,18 +32,18 @@ lib.mkMerge [
     };
 
     stylix.fonts = {
+      serif = {
+        package = pkgs.eb-garamond;
+        name = "EB Garamond";
+      };
       sansSerif = {
         package = pkgs.overpass;
         name = "Overpass";
       };
-
-      serif = config.stylix.fonts.sansSerif;
-
       emoji = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
       };
-
       monospace = {
         package = pkgs.nerd-fonts.fira-mono;
         name = "FiraMono Nerd Font";
@@ -75,6 +75,8 @@ lib.mkMerge [
     if pkgs.stdenv.isLinux then
       {
         stylix.cursor = {
+          name = "Adwaita";
+          package = pkgs.adwaita-icon-theme;
           size = 16;
         };
 
@@ -82,6 +84,9 @@ lib.mkMerge [
           console.enable = true;
           grub.enable = true;
           gtk.enable = true;
+          qt = {
+            enable = true;
+          };
           nixos-icons.enable = true;
           plymouth = {
             enable = false;

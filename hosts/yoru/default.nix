@@ -11,7 +11,7 @@
   # gnome.enable = false;
   x11wm.enable = true;
   dwm.enable = true;
-  fprint.enable = false;
+  fprint.enable = true;
   plymouth.enable = true;
   ratbagd.enable = true;
   syncthing.enable = true;

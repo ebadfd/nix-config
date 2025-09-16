@@ -12,5 +12,6 @@
     services.cloudflare-warp = {
       enable = false;
     };
+    services.fwupd.enable = true;
   };
 }

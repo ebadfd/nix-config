@@ -24,14 +24,14 @@ with lib;
 
     services = {
       libinput.enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
       xserver = {
         enable = true;
         xkb = {
           layout = "us";
           options = "eurosign:e";
         };
-        displayManager.gdm.enable = true;
-        desktopManager.gnome.enable = true;
       };
     };
 

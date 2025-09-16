@@ -12,6 +12,7 @@
     ./plugins/kickstart/plugins/autopairs.nix
     ./plugins/kickstart/plugins/lint.nix
     ./plugins/kickstart/plugins/indent-blankline.nix
+    ./plugins/custom/plugins/vimwiki.nix
   ];
 
   programs.nixvim = lib.mkMerge [

@@ -96,7 +96,7 @@ let
     browser = {
       has_seen_welcome_page = true;
       theme = {
-        color_variant = 1;
+        color_variant = 2;
         user_color = -806210;
       };
     };
@@ -217,7 +217,6 @@ in
     programs.chromium = {
       enable = true;
       package = chromePackage;
-      commandLineArgs = ["--enable-features=AcceleratedVideoDecodeLinuxGL"];
 
       extensions =
         let
@@ -244,23 +243,18 @@ in
         [
           (createChromiumExtension {
             id = ublockOriginExtensionId;
-            sha256 = "sha256:0pdh1v0vx1d5vnl1zh7nbk6j1fh4k4hhwp1ljs203icn306lahsn";
-            version = "1.62.0";
+            sha256 = "sha256:0l77fn9i76jwfpn18r0dvfvfqng4llsimjfqdq2rzxzxsq1zal0w";
+            version = "1.66.0";
           })
           (createChromiumExtension {
             id = bitwardenExtensionId;
-            sha256 = "sha256:0vlgm61wgp2gr2b7ys2pmasj7s202xjvv6h13inj41gbll1rpywn";
-            version = "2025.2.1";
+            sha256 = "sha256:1y250l9z7cvs8fq7frm6jgxnbxry4bxmm2xzk5wri68zjabvw7j3";
+            version = "2025.8.2";
           })
           (createChromiumExtension {
             id = surfingkeysExtensionId;
-            sha256 = "sha256:04ybl87jglk0v46ksxzfbnx9pdm0m5rgjdshx4mq0lakps1bss5q";
-            version = "1.17.7";
-          })
-          (createChromiumExtension {
-            id = surfingkeysExtensionId;
-            sha256 = "sha256:04ybl87jglk0v46ksxzfbnx9pdm0m5rgjdshx4mq0lakps1bss5q";
-            version = "1.17.7";
+            sha256 = "sha256:0iwb01s0ch1sia0vawndzn4kf0i65nvcn4q26gb8ljn0mvhk1vi4";
+            version = "1.17.11";
           })
         ];
     };
