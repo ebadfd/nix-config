@@ -259,6 +259,7 @@ in
     programs = {
       home-manager.enable = true;
     };
+
     xdg = {
       mime.enable = true;
       mimeApps = lib.mkIf (config.gnome.enable == false) {

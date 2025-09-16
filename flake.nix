@@ -4,8 +4,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    stylix.url = "github:danth/stylix/release-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
@@ -15,13 +19,13 @@
     };
 
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     firefox-addons = {
@@ -69,7 +73,7 @@
         location = "$HOME/nix-config";
         terminal = "alacritty";
         editor = "nvim";
-        stateVersion = "24.11";
+        stateVersion = "25.05";
       };
     in
     {
