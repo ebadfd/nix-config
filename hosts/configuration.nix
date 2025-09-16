@@ -62,6 +62,22 @@ in
 
   networking.networkmanager.enable = true;
 
+  fonts = {
+    enableDefaultFonts = true;
+    enableFontDir = true;
+    fontconfig = {
+      defaultFonts = {
+        serif = [
+          "EB Garamond"
+        ];
+        sansSerif = [
+          "Overpass"
+        ];
+        monospace = [ "FiraMono Nerd Font" ];
+      };
+    };
+  };
+
   fonts.packages = with pkgs; [
     carlito # NixOS
     vegur # NixOS
@@ -76,6 +92,8 @@ in
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
     nerd-fonts.space-mono
+    overpass
+    eb-garamond
   ];
 
   environment = {

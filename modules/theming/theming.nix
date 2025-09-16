@@ -15,7 +15,6 @@
   home-manager.users.${vars.user} = {
     gtk = lib.mkIf (config.gnome.enable == false) {
       enable = true;
-
       iconTheme = {
         name = "Papirus-Dark";
         package = pkgs.papirus-icon-theme;
@@ -37,7 +36,3 @@
   #   QT_QPA_PLATFORMTHEME = "gtk2";
   # };
 }
-
-#    qt.enable = lib.mkForce false;
-#    qt.platformTheme.name = lib.mkForce "gtk";
-#    qt.style.name = lib.mkForce null;

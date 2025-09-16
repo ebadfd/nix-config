@@ -109,6 +109,7 @@ let
     SpellcheckEnabled = true;
     RestoreOnStartup = 1;
     BookmarkBarEnabled = false;
+    GtkThemeModeEnabled = true;
 
     # Do not auto import anything
     ImportAutofillFormData = false;

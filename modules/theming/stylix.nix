@@ -75,8 +75,8 @@ lib.mkMerge [
     if pkgs.stdenv.isLinux then
       {
         stylix.cursor = {
-          name = "Adwaita";
-          package = pkgs.adwaita-icon-theme;
+          name = "Vanilla-DMZ";
+          package = pkgs.vanilla-dmz;
           size = 16;
         };
 
@@ -84,9 +84,6 @@ lib.mkMerge [
           console.enable = true;
           grub.enable = true;
           gtk.enable = true;
-          qt = {
-            enable = true;
-          };
           nixos-icons.enable = true;
           plymouth = {
             enable = false;
