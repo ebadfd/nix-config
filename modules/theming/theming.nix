@@ -23,16 +23,10 @@
 
     qt = {
       enable = true;
-      platformTheme.name = lib.mkForce "adwaita-dark";
-      #  stylix: qt: Changing `config.qt.style` is unsupported and may result in breakage! Use with caution!
-      style = {
-        name = lib.mkForce "adwaita-dark";
-        package = pkgs.adwaita-qt6;
-      };
     };
   };
 
-  # environment.variables = {
-  #   QT_QPA_PLATFORMTHEME = "gtk2";
-  # };
+  environment.variables = {
+    QT_QPA_PLATFORMTHEME = lib.mkForce "qt5ct";
+  };
 }

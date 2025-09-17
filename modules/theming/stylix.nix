@@ -31,14 +31,27 @@ lib.mkMerge [
       base0F = "d65d0e";
     };
 
+    stylix.icons = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      light = "Papirus-Light";
+      dark = "Papirus-Dark";
+    };
+
     stylix.fonts = {
       serif = {
         package = pkgs.eb-garamond;
         name = "EB Garamond";
       };
       sansSerif = {
-        package = pkgs.overpass;
-        name = "Overpass";
+        package = pkgs.source-sans-pro;
+        name = "Source Sans Pro";
+        # package = pkgs.ibm-plex;
+        # name = "IBM Plex Sans";
+        # name = "Overpass";
+        # "DejaVu Sans" "IPAPGothic"
+        # name = "Inter";
+        # name = "Overpass Nerd Font";
       };
       emoji = {
         package = pkgs.noto-fonts-emoji;
@@ -84,6 +97,9 @@ lib.mkMerge [
           console.enable = true;
           grub.enable = true;
           gtk.enable = true;
+          qt = {
+            enable = true;
+          };
           nixos-icons.enable = true;
           plymouth = {
             enable = false;

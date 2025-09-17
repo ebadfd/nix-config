@@ -63,38 +63,25 @@ in
   networking.networkmanager.enable = true;
 
   fonts = {
-    enableDefaultFonts = true;
-    enableFontDir = true;
-    fontconfig = {
-      defaultFonts = {
-        serif = [
-          "EB Garamond"
-        ];
-        sansSerif = [
-          "Overpass"
-        ];
-        monospace = [ "FiraMono Nerd Font" ];
-      };
-    };
+    packages = with pkgs; [
+      carlito # NixOS
+      vegur # NixOS
+      source-code-pro
+      jetbrains-mono
+      font-awesome # Icons
+      corefonts # MS
+      noto-fonts # Google + Unicode
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-emoji
+      nerd-fonts.fira-code
+      nerd-fonts.fira-mono
+      nerd-fonts.space-mono
+      nerd-fonts.overpass
+      inter
+      eb-garamond
+    ];
   };
-
-  fonts.packages = with pkgs; [
-    carlito # NixOS
-    vegur # NixOS
-    source-code-pro
-    jetbrains-mono
-    font-awesome # Icons
-    corefonts # MS
-    noto-fonts # Google + Unicode
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-emoji
-    nerd-fonts.fira-code
-    nerd-fonts.fira-mono
-    nerd-fonts.space-mono
-    overpass
-    eb-garamond
-  ];
 
   environment = {
     variables = {
@@ -137,6 +124,8 @@ in
         # Apps
         appimage-run # Runs AppImages on NixOS
         remmina # XRDP & VNC Client
+
+        lxappearance # TEST
 
         # File Management
         file-roller # Archive Manager

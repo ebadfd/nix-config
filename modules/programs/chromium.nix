@@ -12,6 +12,7 @@ let
     HomepageLocation = "https://homepage.ebadfd.tech/";
     NewTabPageLocation = "https://homepage.ebadfd.tech/";
   };
+
   recommendedOpts = {
     BrowserThemeColor = "#181b23";
   };
@@ -38,6 +39,26 @@ let
     profile = {
       avatar_index = 34;
       name = "Personal";
+    };
+    webkit = {
+      webprefs = {
+        default_font_size = 13;
+        default_fixed_font_size = 16;
+        fonts = {
+          fixed = {
+            Zyyy = "FiraCode Nerd Font Mono";
+          };
+          sansserif = {
+            Zyyy = "Source Sans Pro";
+          };
+          serif = {
+            Zyyy = "EB Garamond";
+          };
+          standard = {
+            Zyyy = "Source Sans Pro";
+          };
+        };
+      };
     };
     browser = {
       has_seen_welcome_page = true;
@@ -88,6 +109,26 @@ let
     profile = {
       avatar_index = 30;
       name = "Work";
+    };
+    webkit = {
+      webprefs = {
+        default_font_size = 13;
+        default_fixed_font_size = 16;
+        fonts = {
+          fixed = {
+            Zyyy = "FiraCode Nerd Font Mono";
+          };
+          sansserif = {
+            Zyyy = "Source Sans Pro";
+          };
+          serif = {
+            Zyyy = "EB Garamond";
+          };
+          standard = {
+            Zyyy = "Source Sans Pro";
+          };
+        };
+      };
     };
     pinned_extensions = [
       bitwardenExtensionId
@@ -169,7 +210,9 @@ let
 
   chromePackage =
     if pkgs.stdenv.isLinux then
-      pkgs.ungoogled-chromium
+      pkgs.ungoogled-chromium.overrideAttrs {
+        enableWideVine = true;
+      }
     else if pkgs.stdenv.isDarwin && pkgs.stdenv.isAarch64 then
       let
         chromiumVersion = "1456749";
@@ -265,6 +308,7 @@ in
       ".config/chromium/Default/Preferences".text = builtins.toJSON personalPreferences;
       ".config/chromium/Profile 1/Preferences".text = builtins.toJSON workPreferences;
     };
+
   };
 
   environment.etc = lib.mkIf pkgs.stdenv.isLinux {
