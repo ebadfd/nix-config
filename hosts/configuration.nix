@@ -102,6 +102,7 @@ in
         killall # Process Killer
         lshw # Hardware Config
         nano # Text Editor
+        jq # JSON parser
 
         nix-tree # Browse Nix Store
         pciutils # Manage PCI
@@ -124,8 +125,6 @@ in
         # Apps
         appimage-run # Runs AppImages on NixOS
         remmina # XRDP & VNC Client
-
-        lxappearance # TEST
 
         # File Management
         file-roller # Archive Manager

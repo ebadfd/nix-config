@@ -67,6 +67,27 @@ let
         user_color = -15653309; # 181b23
       };
     };
+    savefile = {
+      default_directory = "/tmp";
+    };
+    default_search_provider_data = {
+      mirrored_template_url_data = {
+        keyword = "duckduckgo.com";
+        short_name = "DuckDuckGo";
+        url = "https://duckduckgo.com/?q={searchTerms}";
+        suggestions_url = "https://duckduckgo.com/ac/?q={searchTerms}&type=list";
+        favicon_url = "https://duckduckgo.com/favicon.ico";
+      };
+    };
+    devtools = {
+      preferences = {
+        "currentDockState" = "right";
+      };
+    };
+    bookmark_bar = {
+      show_on_all_tabs = false;
+      show_tab_groups = true;
+    };
     pinned_extensions = [
       bitwardenExtensionId
       ublockOriginExtensionId
@@ -130,6 +151,27 @@ let
         };
       };
     };
+    savefile = {
+      default_directory = "/tmp";
+    };
+    default_search_provider_data = {
+      mirrored_template_url_data = {
+        keyword = "duckduckgo.com";
+        short_name = "DuckDuckGo";
+        url = "https://duckduckgo.com/?q={searchTerms}";
+        suggestions_url = "https://duckduckgo.com/ac/?q={searchTerms}&type=list";
+        favicon_url = "https://duckduckgo.com/favicon.ico";
+      };
+    };
+    devtools = {
+      preferences = {
+        "currentDockState" = "right";
+      };
+    };
+    bookmark_bar = {
+      show_on_all_tabs = false;
+      show_tab_groups = true;
+    };
     pinned_extensions = [
       bitwardenExtensionId
       ublockOriginExtensionId
@@ -184,7 +226,6 @@ let
     # https://chromeenterprise.google/policies/#HistorySearchSettings
     HistorySearchSettings = 2; # Do not allow the feature
 
-    DownloadDirectory = "/tmp";
     DefaultSearchProviderEnabled = true;
     DefaultSearchProviderName = "DuckDuckGo";
     DefaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}";
