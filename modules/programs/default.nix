@@ -11,4 +11,5 @@
   ./lsp-servers.nix
   ./android-studio.nix
   ./ollama.nix
+  ./libvirtd.nix
 ]

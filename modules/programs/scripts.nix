@@ -25,6 +25,10 @@
         source = ./bin/brctl;
         executable = true;
       };
+      ".local/bin/firefox-work" = {
+        source = ./bin/firefox-work;
+        executable = true;
+      };
     };
   };
 

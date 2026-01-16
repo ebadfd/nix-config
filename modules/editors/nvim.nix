@@ -12,7 +12,9 @@
     ./plugins/kickstart/plugins/autopairs.nix
     ./plugins/kickstart/plugins/lint.nix
     ./plugins/kickstart/plugins/indent-blankline.nix
-    ./plugins/custom/plugins/vimwiki.nix
+    ./plugins/custom/plugins/org.nix
+    ./plugins/custom/plugins/org-roam.nix
+    ./plugins/custom/plugins/org-styles.nix
   ];
 
   programs.nixvim = lib.mkMerge [
@@ -130,6 +132,8 @@
         tabstop = 4;
         softtabstop = 4;
         shiftwidth = 4;
+        conceallevel = 3;
+
         expandtab = true;
 
         clipboard = "unnamedplus";

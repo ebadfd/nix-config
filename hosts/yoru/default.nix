@@ -8,7 +8,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # gnome.enable = false;
   x11wm.enable = true;
   dwm.enable = true;
   fprint.enable = true;
@@ -17,15 +16,21 @@
   syncthing.enable = true;
   twingate.enable = true;
 
-  environment = {
-    systemPackages = with pkgs; [
-      hello # Hello World
-    ];
-  };
+  environment.systemPackages = with pkgs; [
+    hello
+  ];
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 3001 ];
-    allowedUDPPortRanges = [ ];
+  networking = {
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        3001
+        8081
+      ];
+      allowedUDPPortRanges = [ ];
+    };
+
+    enableIPv6 = true;
+    defaultGateway6 = null;
   };
 }

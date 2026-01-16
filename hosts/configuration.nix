@@ -169,11 +169,13 @@ in
         clang
         libtool
         hurl
+        markdownlint-cli # markdown cli
 
         # vpn stuff
         openvpn
 
         nixfmt-rfc-style
+        claude-code
       ]
       ++ (with stable; [
         # Apps

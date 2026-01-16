@@ -465,6 +465,54 @@
         "type": "github"
       }
     },
+    "org-bullets-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737617809,
+        "narHash": "sha256-/l8IfvVSPK7pt3Or39+uenryTM5aBvyJZX5trKNh0X0=",
+        "owner": "nvim-orgmode",
+        "repo": "org-bullets.nvim",
+        "rev": "21437cfa99c70f2c18977bffd423f912a7b832ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-orgmode",
+        "repo": "org-bullets.nvim",
+        "type": "github"
+      }
+    },
+    "org-list-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747473964,
+        "narHash": "sha256-IHRxDogmC6BRUTsc+lQWidKmAaVUbFZmq3e814mpn0U=",
+        "owner": "hamidi-dev",
+        "repo": "org-list.nvim",
+        "rev": "2d6f2985e0312daabb6d06725746f5b8c2e5a002",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hamidi-dev",
+        "repo": "org-list.nvim",
+        "type": "github"
+      }
+    },
+    "org-roam-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758290581,
+        "narHash": "sha256-PJiZU9tGNCv0ScnLFMPWYXIlCMr+NBBjWJNopRbd9Es=",
+        "owner": "chipsenkbeil",
+        "repo": "org-roam.nvim",
+        "rev": "946c3289d8aa5a84b84458b8c9aa869c2a10f836",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chipsenkbeil",
+        "repo": "org-roam.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "emacs-overlay": "emacs-overlay",
@@ -477,6 +525,9 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "nixvim": "nixvim",
+        "org-bullets-nvim": "org-bullets-nvim",
+        "org-list-nvim": "org-list-nvim",
+        "org-roam-nvim": "org-roam-nvim",
         "stylix": "stylix"
       }
     },
