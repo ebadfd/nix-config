@@ -9,4 +9,9 @@
   ./chromium.nix
   ./bitwaden.nix
   ./lsp-servers.nix
+  ./android-studio.nix
+  ./ollama.nix
+  ./libvirtd.nix
+  ./claude.nix
+  ./waydroid.nix
 ]

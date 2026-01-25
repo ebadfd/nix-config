@@ -8,24 +8,37 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # gnome.enable = false;
-  x11wm.enable = true;
-  dwm.enable = true;
+  # Disable X11 WM and enable Wayland WM with Mango
+  #x11wm.enable = true;
+  #dwm.enable = true;
+
+  wlwm.enable = true;
+  mango.enable = true;
+  mango.greeter = "tui";
+  #niri.enable = true;
+  #quickshell.enable = true;
+
   fprint.enable = true;
   plymouth.enable = true;
   ratbagd.enable = true;
   syncthing.enable = true;
   twingate.enable = true;
 
-  environment = {
-    systemPackages = with pkgs; [
-      hello # Hello World
-    ];
-  };
+  environment.systemPackages = with pkgs; [
+    hello
+  ];
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 3001 ];
-    allowedUDPPortRanges = [ ];
+  networking = {
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        3001
+        8081
+      ];
+      allowedUDPPortRanges = [ ];
+    };
+
+    enableIPv6 = true;
+    defaultGateway6 = null;
   };
 }

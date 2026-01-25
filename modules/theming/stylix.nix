@@ -5,30 +5,24 @@
   vars,
   ...
 }:
+let
+  colors = import ./colors.nix;
+  activeScheme = colors.scheme.${colors.active};
+in
 lib.mkMerge [
   {
     stylix.enable = true;
 
     stylix.polarity = "dark";
-    stylix.image = ./wall.jpg;
+    stylix.image = ../../wallpaper.png;
 
-    stylix.base16Scheme = {
-      base00 = "181b23";
-      base01 = "2a2f3a";
-      base02 = "3c3836";
-      base03 = "665c54";
-      base04 = "d3c8ba";
-      base05 = "eae3d9";
-      base06 = "f3eee5";
-      base07 = "f3eee5";
-      base08 = "d36c6c";
-      base09 = "e7a953";
-      base0A = "f6c982";
-      base0B = "a8c074";
-      base0C = "78b6bc";
-      base0D = "4d8dc4";
-      base0E = "b18bbb";
-      base0F = "d65d0e";
+    stylix.base16Scheme = activeScheme.base16;
+
+    stylix.icons = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      light = "Papirus-Light";
+      dark = "Papirus-Dark";
     };
 
     stylix.fonts = {
@@ -37,11 +31,17 @@ lib.mkMerge [
         name = "EB Garamond";
       };
       sansSerif = {
-        package = pkgs.overpass;
-        name = "Overpass";
+        package = pkgs.source-sans-pro;
+        name = "Source Sans Pro";
+        # package = pkgs.ibm-plex;
+        # name = "IBM Plex Sans";
+        # name = "Overpass";
+        # "DejaVu Sans" "IPAPGothic"
+        # name = "Inter";
+        # name = "Overpass Nerd Font";
       };
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
       monospace = {
@@ -67,7 +67,17 @@ lib.mkMerge [
       stylix.targets = {
         emacs.enable = false;
         feh.enable = true;
-        tmux.enable = false;
+        tmux.enable = true;
+        nixvim.enable = true;
+        waybar.enable = true;
+        mako.enable = true;
+        swaylock.enable = false;
+        alacritty.enable = true;
+        rofi.enable = true;
+        firefox.profileNames = [
+          "${vars.user}"
+          "${vars.user}-work"
+        ];
       };
     };
   }
@@ -75,8 +85,8 @@ lib.mkMerge [
     if pkgs.stdenv.isLinux then
       {
         stylix.cursor = {
-          name = "Adwaita";
-          package = pkgs.adwaita-icon-theme;
+          name = "Vanilla-DMZ";
+          package = pkgs.vanilla-dmz;
           size = 16;
         };
 

@@ -5,6 +5,9 @@
   ...
 }:
 let
+  colors = import ../theming/colors.nix;
+  activeScheme = colors.scheme.${colors.active};
+
   defaultProfile = {
     DefaultBrowserSettingEnabled = false;
     DnsOverHttpsMode = "automatic";
@@ -12,8 +15,9 @@ let
     HomepageLocation = "https://homepage.ebadfd.tech/";
     NewTabPageLocation = "https://homepage.ebadfd.tech/";
   };
+
   recommendedOpts = {
-    BrowserThemeColor = "#181b23";
+    BrowserThemeColor = activeScheme.hex.bg;
   };
 
   # Bitwarden Password Manager
@@ -32,19 +36,60 @@ let
   personalPreferences = {
     partition = {
       default_zoom_level = {
-        x = -0.5778829311823857;
+        x = 0;
       };
     };
     profile = {
       avatar_index = 34;
       name = "Personal";
     };
+    webkit = {
+      webprefs = {
+        default_font_size = 14;
+        default_fixed_font_size = 12;
+        fonts = {
+          fixed = {
+            Zyyy = "FiraCode Nerd Font Mono";
+          };
+          sansserif = {
+            Zyyy = "Source Sans Pro";
+          };
+          serif = {
+            Zyyy = "EB Garamond";
+          };
+          standard = {
+            Zyyy = "Source Sans Pro";
+          };
+        };
+      };
+    };
     browser = {
       has_seen_welcome_page = true;
       theme = {
         color_variant = 1;
-        user_color = -15653309; # 181b23
+        user_color = -15925489; # 0d0f0f (mango bg)
       };
+    };
+    savefile = {
+      default_directory = "/tmp";
+    };
+    default_search_provider_data = {
+      mirrored_template_url_data = {
+        keyword = "duckduckgo.com";
+        short_name = "DuckDuckGo";
+        url = "https://duckduckgo.com/?q={searchTerms}";
+        suggestions_url = "https://duckduckgo.com/ac/?q={searchTerms}&type=list";
+        favicon_url = "https://duckduckgo.com/favicon.ico";
+      };
+    };
+    devtools = {
+      preferences = {
+        "currentDockState" = "right";
+      };
+    };
+    bookmark_bar = {
+      show_on_all_tabs = false;
+      show_tab_groups = true;
     };
     pinned_extensions = [
       bitwardenExtensionId
@@ -82,12 +127,53 @@ let
   workPreferences = {
     partition = {
       default_zoom_level = {
-        x = -0.5778829311823857;
+        x = 0;
       };
     };
     profile = {
       avatar_index = 30;
       name = "Work";
+    };
+    webkit = {
+      webprefs = {
+        default_font_size = 16;
+        default_fixed_font_size = 14;
+        fonts = {
+          fixed = {
+            Zyyy = "FiraCode Nerd Font Mono";
+          };
+          sansserif = {
+            Zyyy = "Source Sans Pro";
+          };
+          serif = {
+            Zyyy = "EB Garamond";
+          };
+          standard = {
+            Zyyy = "Source Sans Pro";
+          };
+        };
+      };
+    };
+    savefile = {
+      default_directory = "/tmp";
+    };
+    default_search_provider_data = {
+      mirrored_template_url_data = {
+        keyword = "duckduckgo.com";
+        short_name = "DuckDuckGo";
+        url = "https://duckduckgo.com/?q={searchTerms}";
+        suggestions_url = "https://duckduckgo.com/ac/?q={searchTerms}&type=list";
+        favicon_url = "https://duckduckgo.com/favicon.ico";
+      };
+    };
+    devtools = {
+      preferences = {
+        "currentDockState" = "right";
+      };
+    };
+    bookmark_bar = {
+      show_on_all_tabs = false;
+      show_tab_groups = true;
     };
     pinned_extensions = [
       bitwardenExtensionId
@@ -96,8 +182,8 @@ let
     browser = {
       has_seen_welcome_page = true;
       theme = {
-        color_variant = 2;
-        user_color = -806210;
+        color_variant = 1;
+        user_color = -4165520; # ffc07070 (mango red)
       };
     };
   };
@@ -109,6 +195,7 @@ let
     SpellcheckEnabled = true;
     RestoreOnStartup = 1;
     BookmarkBarEnabled = false;
+    GtkThemeModeEnabled = true;
 
     # Do not auto import anything
     ImportAutofillFormData = false;
@@ -142,7 +229,6 @@ let
     # https://chromeenterprise.google/policies/#HistorySearchSettings
     HistorySearchSettings = 2; # Do not allow the feature
 
-    DownloadDirectory = "/tmp";
     DefaultSearchProviderEnabled = true;
     DefaultSearchProviderName = "DuckDuckGo";
     DefaultSearchProviderSearchURL = "https://duckduckgo.com/?q={searchTerms}";
@@ -168,7 +254,9 @@ let
 
   chromePackage =
     if pkgs.stdenv.isLinux then
-      pkgs.ungoogled-chromium
+      pkgs.ungoogled-chromium.overrideAttrs {
+        enableWideVine = true;
+      }
     else if pkgs.stdenv.isDarwin && pkgs.stdenv.isAarch64 then
       let
         chromiumVersion = "1456749";
@@ -263,7 +351,9 @@ in
     home.file = {
       ".config/chromium/Default/Preferences".text = builtins.toJSON personalPreferences;
       ".config/chromium/Profile 1/Preferences".text = builtins.toJSON workPreferences;
+      ".config/chromium/Profile 2/Preferences".text = builtins.toJSON workPreferences;
     };
+
   };
 
   environment.etc = lib.mkIf pkgs.stdenv.isLinux {

@@ -48,6 +48,25 @@
       url = "gitlab:evysgarden/mikuboot";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    org-roam-nvim = {
+      flake = false;
+      url = "github:chipsenkbeil/org-roam.nvim";
+    };
+    org-bullets-nvim = {
+      flake = false;
+      url = "github:nvim-orgmode/org-bullets.nvim";
+    };
+    org-list-nvim = {
+      flake = false;
+      url = "github:hamidi-dev/org-list.nvim";
+    };
+
+    claude-code.url = "github:sadjow/claude-code-nix";
+    
+    mango = {
+      url = "github:DreamMaoMao/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -93,6 +112,8 @@
             mikuboot
             vars
             ;
+          claude-code = inputs.claude-code;
+          mango = inputs.mango;
         }
       );
 

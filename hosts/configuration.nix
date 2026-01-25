@@ -62,21 +62,26 @@ in
 
   networking.networkmanager.enable = true;
 
-  fonts.packages = with pkgs; [
-    carlito # NixOS
-    vegur # NixOS
-    source-code-pro
-    jetbrains-mono
-    font-awesome # Icons
-    corefonts # MS
-    noto-fonts # Google + Unicode
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-emoji
-    nerd-fonts.fira-code
-    nerd-fonts.fira-mono
-    nerd-fonts.space-mono
-  ];
+  fonts = {
+    packages = with pkgs; [
+      carlito # NixOS
+      vegur # NixOS
+      source-code-pro
+      jetbrains-mono
+      font-awesome # Icons
+      corefonts # MS
+      noto-fonts # Google + Unicode
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      noto-fonts-color-emoji
+      nerd-fonts.fira-code
+      nerd-fonts.fira-mono
+      nerd-fonts.space-mono
+      nerd-fonts.overpass
+      inter
+      eb-garamond
+    ];
+  };
 
   environment = {
     variables = {
@@ -97,6 +102,7 @@ in
         killall # Process Killer
         lshw # Hardware Config
         nano # Text Editor
+        jq # JSON parser
 
         nix-tree # Browse Nix Store
         pciutils # Manage PCI
@@ -163,6 +169,7 @@ in
         clang
         libtool
         hurl
+        markdownlint-cli # markdown cli
 
         # vpn stuff
         openvpn
@@ -242,8 +249,6 @@ in
       keep-derivations      = true
     '';
   };
-  nixpkgs.config.allowUnfree = true;
-
   system = {
     # autoUpgrade = {
     #   enable = true;

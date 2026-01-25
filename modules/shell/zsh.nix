@@ -20,6 +20,7 @@
     histSize = 100000;
 
     promptInit = ''
+      export PATH="$HOME/.local/bin:$PATH"
       source /home/${vars.user}/.zsh_profile
     '';
 
