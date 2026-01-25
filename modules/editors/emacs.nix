@@ -31,9 +31,7 @@
           epkgs.cask
 
           pkgs.rustup-toolchain-install-master
-          pkgs.cargo
           pkgs.rustup
-          pkgs.rust-analyzer
 
           pkgs.go
           pkgs.gopls

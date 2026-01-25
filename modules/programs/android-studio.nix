@@ -1,8 +1,9 @@
 { vars, pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.android-studio ];
-
-  programs.adb.enable = true;
+  environment.systemPackages = [
+    pkgs.android-studio
+    pkgs.android-tools
+  ];
 
   users.users.${vars.user} = {
     isNormalUser = true;

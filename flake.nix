@@ -60,6 +60,13 @@
       flake = false;
       url = "github:hamidi-dev/org-list.nvim";
     };
+
+    claude-code.url = "github:sadjow/claude-code-nix";
+    
+    mango = {
+      url = "github:DreamMaoMao/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -105,6 +112,8 @@
             mikuboot
             vars
             ;
+          claude-code = inputs.claude-code;
+          mango = inputs.mango;
         }
       );
 

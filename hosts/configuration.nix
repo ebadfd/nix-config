@@ -73,7 +73,7 @@ in
       noto-fonts # Google + Unicode
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       nerd-fonts.fira-code
       nerd-fonts.fira-mono
       nerd-fonts.space-mono
@@ -175,7 +175,6 @@ in
         openvpn
 
         nixfmt-rfc-style
-        claude-code
       ]
       ++ (with stable; [
         # Apps
@@ -250,8 +249,6 @@ in
       keep-derivations      = true
     '';
   };
-  nixpkgs.config.allowUnfree = true;
-
   system = {
     # autoUpgrade = {
     #   enable = true;

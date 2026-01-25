@@ -12,4 +12,6 @@
   ./android-studio.nix
   ./ollama.nix
   ./libvirtd.nix
+  ./claude.nix
+  ./waydroid.nix
 ]

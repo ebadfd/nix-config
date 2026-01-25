@@ -5,6 +5,9 @@
   ...
 }:
 let
+  colors = import ../theming/colors.nix;
+  activeScheme = colors.scheme.${colors.active};
+
   defaultProfile = {
     DefaultBrowserSettingEnabled = false;
     DnsOverHttpsMode = "automatic";
@@ -14,7 +17,7 @@ let
   };
 
   recommendedOpts = {
-    BrowserThemeColor = "#181b23";
+    BrowserThemeColor = activeScheme.hex.bg;
   };
 
   # Bitwarden Password Manager
@@ -33,7 +36,7 @@ let
   personalPreferences = {
     partition = {
       default_zoom_level = {
-        x = -0.5778829311823857;
+        x = 0;
       };
     };
     profile = {
@@ -42,8 +45,8 @@ let
     };
     webkit = {
       webprefs = {
-        default_font_size = 13;
-        default_fixed_font_size = 16;
+        default_font_size = 14;
+        default_fixed_font_size = 12;
         fonts = {
           fixed = {
             Zyyy = "FiraCode Nerd Font Mono";
@@ -64,7 +67,7 @@ let
       has_seen_welcome_page = true;
       theme = {
         color_variant = 1;
-        user_color = -15653309; # 181b23
+        user_color = -15925489; # 0d0f0f (mango bg)
       };
     };
     savefile = {
@@ -124,7 +127,7 @@ let
   workPreferences = {
     partition = {
       default_zoom_level = {
-        x = -0.5778829311823857;
+        x = 0;
       };
     };
     profile = {
@@ -133,8 +136,8 @@ let
     };
     webkit = {
       webprefs = {
-        default_font_size = 13;
-        default_fixed_font_size = 16;
+        default_font_size = 16;
+        default_fixed_font_size = 14;
         fonts = {
           fixed = {
             Zyyy = "FiraCode Nerd Font Mono";
@@ -179,8 +182,8 @@ let
     browser = {
       has_seen_welcome_page = true;
       theme = {
-        color_variant = 2;
-        user_color = -806210;
+        color_variant = 1;
+        user_color = -4165520; # ffc07070 (mango red)
       };
     };
   };
@@ -348,6 +351,7 @@ in
     home.file = {
       ".config/chromium/Default/Preferences".text = builtins.toJSON personalPreferences;
       ".config/chromium/Profile 1/Preferences".text = builtins.toJSON workPreferences;
+      ".config/chromium/Profile 2/Preferences".text = builtins.toJSON workPreferences;
     };
 
   };

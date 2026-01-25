@@ -8,6 +8,8 @@
   emacs-overlay,
   nixvim,
   mikuboot,
+  claude-code,
+  mango,
   vars,
   ...
 }:
@@ -19,14 +21,14 @@ let
     inherit system;
     overlays = [
       emacs-overlay.overlay
+      claude-code.overlays.default
       (final: prev: {
         slstatus = prev.slstatus.overrideAttrs (old: {
-          src = pkgs.fetchFromGitHub {
+          src = prev.fetchFromGitHub {
             owner = "ebadfd";
             repo = "slstatus";
             rev = "master";
             sha256 = "sha256-pLqfdgeEO1cAewi9UwIXDnIAK4/+4HIpgFGwJVtMAKI=";
-            # sha256 = lib.fakeSha256;
           };
         });
       })
@@ -42,12 +44,11 @@ let
       emacs-overlay.overlay
       (final: prev: {
         slstatus = prev.slstatus.overrideAttrs (old: {
-          src = pkgs.fetchFromGitHub {
+          src = prev.fetchFromGitHub {
             owner = "ebadfd";
             repo = "slstatus";
             rev = "master";
             sha256 = "sha256-pLqfdgeEO1cAewi9UwIXDnIAK4/+4HIpgFGwJVtMAKI=";
-            # sha256 = lib.fakeSha256;
           };
         });
       })
@@ -70,6 +71,8 @@ in
         stable
         vars
         pkgs
+        claude-code
+        mango
         ;
       host = {
         hostName = "yoru";
@@ -87,6 +90,9 @@ in
         home-manager.backupFileExtension = "hmbackup";
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.sharedModules = [
+          mango.hmModules.mango
+        ];
       }
     ];
   };

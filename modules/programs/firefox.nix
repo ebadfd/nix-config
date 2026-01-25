@@ -316,13 +316,14 @@ in
             id = 0;
             name = "${vars.user}";
             isDefault = true;
+            extensions.force = true;
             search = {
               force = true;
               default = "ddg";
               order = [
                 "ddg"
                 "youtube"
-                "Google"
+                "google"
                 "NixOS Options"
                 "Nix Packages"
                 "GitHub"
@@ -331,7 +332,7 @@ in
 
               engines = searchEngines;
             };
-            extensions =
+            extensions.packages =
               with (
                 if pkgs.stdenv.isDarwin then
                   inputs.firefox-addons.packages."aarch64-darwin"
@@ -348,6 +349,7 @@ in
             id = 1;
             name = "${vars.user}-work";
             isDefault = false;
+            extensions.force = true;
             userChrome = ''
               :root {
                 --work-red: #b91c1c;
@@ -378,7 +380,7 @@ in
 
               engines = searchEngines;
             };
-            extensions =
+            extensions.packages =
               with (
                 if pkgs.stdenv.isDarwin then
                   inputs.firefox-addons.packages."aarch64-darwin"

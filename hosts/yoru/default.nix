@@ -8,8 +8,16 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  x11wm.enable = true;
-  dwm.enable = true;
+  # Disable X11 WM and enable Wayland WM with Mango
+  #x11wm.enable = true;
+  #dwm.enable = true;
+
+  wlwm.enable = true;
+  mango.enable = true;
+  mango.greeter = "tui";
+  #niri.enable = true;
+  #quickshell.enable = true;
+
   fprint.enable = true;
   plymouth.enable = true;
   ratbagd.enable = true;

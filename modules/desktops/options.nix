@@ -50,5 +50,11 @@ with lib;
         default = false;
       };
     };
+    quickshell = {
+      enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+    };
   };
 }
